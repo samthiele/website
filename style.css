@@ -33,12 +33,12 @@ html,
     }*/
 
     .swiper-container {
-      width: 80%;
+      max-width: 1400px;
       height: 100%; /*88%;*/
     }
     .swiper-container-v {
       /* border-left: 25px solid #292F33; */
-      border-right: 25px solid #292F33;
+      border-right: 4px solid #292F33;
       background: darkgray;
       overflow: visible;
     }
@@ -137,8 +137,10 @@ html,
     .profilepic{
       display: block;
       margin: 0 auto;
-      width: 200px;
-      height: 200px;
+      width: 20%;
+      height: auto;
+      max-width: 250px;
+      max-height: 250px;
       border-radius: 30px;
       border: 2px solid;
       display: block;

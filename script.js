@@ -53,7 +53,7 @@ var swiperC = new Swiper('.swiper-contacts', {
         prevEl: '.swiper-button-prev',
       },
       centeredSlides: true,
-      slidesPerView: 2,
+      slidesPerView: 1.5,
       loop: true,
       mousewheel: false,
       grabCursor: false,
