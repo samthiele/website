@@ -1,0 +1,208 @@
+html,
+
+    body {
+      background: black;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: white;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      height: 100%;
+      overflow: hidden
+    }
+
+    :root {
+      --floatcolor: rgba(0, 0, 0, 0.4);
+    /*  --floatcolor: rgba(255, 255, 255, 0.4);*/
+    }
+    /*.header {
+      margin: auto;
+      width: 80%;
+      height: 12%;
+      text-align: center;
+      background: #1c73b0;
+      color: black;
+      font-size: 30px;
+      line-height: 10px;
+      padding-left: 0px;
+      padding-right: 0px;
+      padding-top: 1px;
+      padding-bottom: 5px;
+      border-bottom: 2px solid #e8a161;
+    }*/
+
+    .swiper-container {
+      width: 80%;
+      height: 100%; /*88%;*/
+    }
+    .swiper-container-v {
+      /* border-left: 25px solid #292F33; */
+      border-right: 25px solid #292F33;
+      background: darkgray;
+      overflow: visible;
+    }
+    .swiper-container-h {
+      background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+      background: var(--floatcolor);
+      box-shadow: 0 25px 25px 0px var(--floatcolor);
+      width: 100%;
+      height: 50%;
+    }
+
+    .swiper-slide {
+    }
+
+    .swiper-pagination-v {
+        background: #292F33;
+        --swiper-theme-color: lightgray;
+    }
+    .swiper-pagination-bullet {
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    font-size: 14px;
+    color: white;
+    opacity: 1;
+    background: var(--floatcolor);
+    transition: transform .2s; /* Hover Animation */
+  }
+  .swiper-pagination-bullet:hover {
+    transform: scale(1.2); /* (125% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+
+
+    .centerbox {
+      width: 100%;
+      height: 100%; /*88%;*/
+
+      /*Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+
+    }
+    .maintext {
+      text-align: center;
+      font-size: 18px;
+      width: auto;
+      max-width: 700px;
+      line-height: 32px;
+      margin: 0 auto;
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-bottom: 15px;
+    }
+
+    .floattext {
+      text-align: center;
+      font-size: 18px;
+      width: auto;
+      max-width: 700px;
+      line-height: 32px;
+      margin: 0 auto;
+      background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+      background: var(--floatcolor);
+      box-shadow: 0 0 25px 25px var(--floatcolor);
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-bottom: 15px;
+    }
+
+    .toptext {
+      text-align: left;
+      font-size: 20px;
+      width: 100%;
+      height: 3.5em;
+      line-height: 35px;
+      margin: 0 auto;
+      background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+      background: var(--floatcolor);
+      box-shadow: 0 -25px 25px 0px var(--floatcolor);
+      padding-left: 20%;
+      padding-right: 20%;
+      margin-top: 15%;
+    }
+
+    .profilepic{
+      display: block;
+      margin: 0 auto;
+      width: 200px;
+      height: 200px;
+      border-radius: 30px;
+      border: 2px solid;
+      display: block;
+      margin-top: 20%;
+      margin-bottom: 3em;
+      box-shadow: 8px 8px 10px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .contact {
+      text-align: center;
+      font-size: 18px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-contacts{
+      margin-top: 10%;
+      max-width: 600px;
+      height: 450px;
+      margin-bottom: 3em;
+      z-index: 100;
+    }
+
+    .contacttext {
+
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 85%;
+      height: auto;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      background: #292F33;
+      border-radius: 10px;
+    }
+
+    .mousepop {
+      transition: transform .2s; /* Hover Animation */
+    }
+    .mousepop:hover {
+      transform: scale(1.1); /* (125% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+
+    .parallax-bg {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 200%;
+      -webkit-background-size: cover;
+      background-size: cover;
+      background-position: center;
+    }
+
+    #contacttext {
+      background: none;
+      box-shadow: none;
+    },
+/*   .center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+} */
