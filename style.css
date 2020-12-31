@@ -1,78 +1,75 @@
 html,
 
+
+
     body {
       background: black;
       font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
       font-size: 14px;
+      line-height: 2em;
       color: white;
-      margin: 0;
-      padding: 0;
-      position: relative;
+      text-align: center;
+
+      /* center body to max width */
+      margin: 0 auto;
+      max-width: var(--maxwidth);
       height: 100%;
-      overflow: hidden
     }
 
     :root {
       --floatcolor: rgba(0, 0, 0, 0.4);
-    /*  --floatcolor: rgba(255, 255, 255, 0.4);*/
+      --edgecolor: rgba(255, 255, 255, 0.4);
+      --shadowcolor: rgba(0, 0, 0, 0.4);
+      --titlesize: 18;
+      --normalsize: 15;
+      --maxwidth: 1250px;
+      --swiper-theme-color: lightgray;
     }
-    /*.header {
-      margin: auto;
-      width: 80%;
-      height: 12%;
-      text-align: center;
-      background: #1c73b0;
-      color: black;
-      font-size: 30px;
-      line-height: 10px;
-      padding-left: 0px;
-      padding-right: 0px;
-      padding-top: 1px;
-      padding-bottom: 5px;
-      border-bottom: 2px solid #e8a161;
-    }*/
 
-    .swiper-container {
-      max-width: 1400px;
-      height: 100%; /*88%;*/
-    }
-    .swiper-container-v {
-      /* border-left: 25px solid #292F33; */
-      border-right: 4px solid #292F33;
-      background: darkgray;
-      overflow: visible;
-    }
-    .swiper-container-h {
-      background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
-      background: var(--floatcolor);
-      box-shadow: 0 25px 25px 0px var(--floatcolor);
+    /* Background image */
+    .parallax-bg {
+      position: absolute;
+      top: 0px;
       width: 100%;
-      height: 50%;
+      height: 200%;
+      max-width: var(--maxwidth);
+      background-size: cover;
+      background-position: center;
     }
 
-    .swiper-slide {
+    /* Images */
+    #profilepic {
+      display: block;
+      margin: 0 auto;
+      width: 20%;
+      height: auto;
+      max-width: 250px;
+      max-height: 250px;
+      border-radius: 30px;
+      border: 2px solid;
+      margin-top: 5em;
+      margin-bottom: 3em;
     }
-
-    .swiper-pagination-v {
-        background: #292F33;
-        --swiper-theme-color: lightgray;
+    .large-icon{
+      max-height: 150px;
+      /*max-width: 150px;*/
+      padding-top: 15px;
+      padding-bottom: 15px;
     }
-    .swiper-pagination-bullet {
-    width: 25px;
-    height: 25px;
-    text-align: center;
-    line-height: 25px;
-    font-size: 14px;
-    color: white;
-    opacity: 1;
-    background: var(--floatcolor);
-    transition: transform .2s; /* Hover Animation */
-  }
-  .swiper-pagination-bullet:hover {
-    transform: scale(1.2); /* (125% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-  }
-
-
+    .small-icon{
+      height:2.5em;
+      /*width:2.5em;*/
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+    /* Alignments */
+    .vcenter{ /* center contents vertically */
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
     .centerbox {
       width: 100%;
       height: 100%; /*88%;*/
@@ -90,82 +87,130 @@ html,
       -ms-flex-align: center;
       -webkit-align-items: center;
       align-items: center;
-
-    }
-    .maintext {
-      text-align: center;
-      font-size: 18px;
-      width: auto;
-      max-width: 700px;
-      line-height: 32px;
-      margin: 0 auto;
-      padding-left: 15px;
-      padding-right: 15px;
-      padding-bottom: 15px;
     }
 
-    .floattext {
-      text-align: center;
-      font-size: 18px;
-      width: auto;
-      max-width: 700px;
-      line-height: 32px;
-      margin: 0 auto;
+    /* Containers */
+    .floating-cloud{
       background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
       background: var(--floatcolor);
       box-shadow: 0 0 25px 25px var(--floatcolor);
+      max-width: 700px;
+      position: relative;
+      left: 50%;
+      top: auto;
+      transform: translateX(-50%);
+    }
+    .horizontal-bar { /* A vertically centered horizontal bar */
+      background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
+      background: var(--floatcolor);
+      border-top: 4px solid var(--edgecolor);
+      border-bottom: 4px solid var(--edgecolor);
+      max-height: 450px;
+    }
+    .drop-shadow {
+      box-shadow: 8px 8px 10px 10px var(--shadowcolor);
+    }
+
+    /* Text styles */
+    .title-text {
+      font-size: var(--titlesize);
       padding-left: 15px;
       padding-right: 15px;
       padding-bottom: 15px;
+      line-height: 2em;
     }
 
-    .toptext {
-      text-align: left;
-      font-size: 20px;
-      width: 100%;
-      height: 3.5em;
-      line-height: 35px;
-      margin: 0 auto;
-      background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
-      background: var(--floatcolor);
-      box-shadow: 0 -25px 25px 0px var(--floatcolor);
-      padding-left: 20%;
-      padding-right: 20%;
-      margin-top: 15%;
+    .item-text {
+      font-size: var(--normalsize);
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-bottom: 15px;
+      line-height: 2em;
+      max-width: 700px;
     }
 
-    .profilepic{
-      display: block;
-      margin: 0 auto;
-      width: 20%;
-      height: auto;
-      max-width: 250px;
-      max-height: 250px;
-      border-radius: 30px;
-      border: 2px solid;
-      display: block;
-      margin-top: 20%;
-      margin-bottom: 3em;
-      box-shadow: 8px 8px 10px 10px rgba(0, 0, 0, 0.4);
-    }
+    .emphasise-text {
+      font-size: var(--titlesize);
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-bottom: 15px;
+      line-height: 2em;
+    } /*line-height: 32px;*/
 
-    .contact {
-      text-align: center;
-      font-size: 18px;
-      width: 100%;
+    /* Swipers */
+    .swiper-container {
+      max-width: 1400px;
       height: 100%;
     }
+    .swiper-container-v {
+      border-right: 4px solid #292F33;
+      /*overflow: visible;*/
+    }
+    .swiper-container-h {
+      width: 100%;
+      height: 50%;
+    }
+    .swiper-pagination-v {
+      background: #292F33;
+      --swiper-theme-color: lightgray;
+    }
+    .swiper-pagination-bullet {
+      width: 25px;
+      height: 25px;
+      text-align: center;
+      line-height: 25px;
+      font-size: 14px;
+      color: white;
+      opacity: 1;
+      background: var(--floatcolor);
+      transition: transform .2s; /* Hover Animation */
+    }
+    .swiper-pagination-bullet:hover {
+      transform: scale(1.2); /* (125% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
 
+    /* Animations */
+    .mousepop {
+      transition: transform .2s;
+    }
+    .mousepop:hover {
+      transform: scale(1.1); /* (125% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+
+    /* Publications */
+    .swiper-publications{
+      max-width: 600px;
+      resize: both;
+      margin-bottom: 1.5em;
+      margin-top: 1.5em;
+    }
+
+    .pubicon{
+      max-height: 170px;
+      width: auto;
+      resize: both;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      transition: transform .2s;
+    }
+    .pubicon:hover {
+      transform: scale(2.5); /* (125% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+      z-index: -1;
+    }
+
+
+    /* Contacts */
     .swiper-contacts{
-      margin-top: 10%;
       max-width: 600px;
       height: 450px;
       margin-bottom: 3em;
-      z-index: 100;
     }
-
-    .contacttext {
-
+    .contact-trp { /*Transparent (exterior) contacts box*/
+      font-size: 18px;
+      width: 100%; /* fill space */
+      height: 100%;
+    }
+    .contact-opq { /*Transparent (interior) contacts box*/
       margin: 0;
       position: absolute;
       top: 50%;
@@ -177,34 +222,3 @@ html,
       background: #292F33;
       border-radius: 10px;
     }
-
-    .mousepop {
-      transition: transform .2s; /* Hover Animation */
-    }
-    .mousepop:hover {
-      transform: scale(1.1); /* (125% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-    }
-
-    .parallax-bg {
-      position: absolute;
-      left: 0px;
-      top: 0px;
-      width: 100%;
-      height: 200%;
-      -webkit-background-size: cover;
-      background-size: cover;
-      background-position: center;
-    }
-
-    #contacttext {
-      background: none;
-      box-shadow: none;
-    },
-/*   .center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-} */

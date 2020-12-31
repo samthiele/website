@@ -6,260 +6,267 @@
   <link rel='stylesheet' href='https://swiperjs.com/package/swiper-bundle.min.css'><link rel="stylesheet" href="./style.css">
 </head>
 
-  <!--
-  <div class="header">
-    <h1>Geoscience made Digital</h1>
-    <p><i>Fusing earth and data science</i></p>
-  </div>
-Heading -->
-  <!-- Swiper -->
+<body>
+
+  <!-- Main (vertical) swiper -->
   <div class="swiper-container swiper-container-v">
+
+    <!-- Background -->
     <div class="parallax-bg"
         style="background-image:url(./img/bg0_grd.jpg)"
         data-swiper-parallax="-50%"
         data-swiper-parallax-opacity="0.75"></div>
+
+    <!-- Contents -->
     <div class="swiper-wrapper">
+
       <!-- Intro -->
-      <div class="swiper-slide", id="pg0">
-        <img src="img/profile.jpg" alt="Profile", class="profilepic mousepop">
-          <div class="floattext" id="intro">
-              <p>
-              Hi, I'm Sam.</p>
+      <div class="swiper-slide"><div class = "vcenter">
+        <img src="img/profile.jpg" alt="Profile", class="drop-shadow mousepop" id="profilepic">
+          <div class="floating-cloud emphasise-text">
+              <p>Hi, I'm Sam.</p>
               <p>As a geologist, I'm fascinated by our wonderfully complex yet amazingly organised planet.
               I particularly enjoy the challenges earth scientists face when integrating and synthesising
               diverse and multi-scale datasets. </p>
               <p>This has lead me to the cutting edge of digital geoscience, where I use data
               science and computer vision to capture and understand earth systems and processes.</p>
           </div>
+      </div></div>
+
+      <!-- Page 1 -->
+      <div class="swiper-slide"> <div class="horizontal-bar vcenter">
+        <div class="title-text">
+            <p><b>Things I'm interested in</b></p>
+        </div>
+        <div class="swiper-container swiper-container-h"><div class="swiper-wrapper">
+
+          <div class="swiper-slide centerbox">
+            <div class="item-text">
+          <p><b>Volcanology</b></p>
+          <p>I did my PhD on the interactions between dykes, stress and volcano instability.
+            Volcanoes are fascinatingly variable and unpredictable, an important reminder that
+            even baby geology is intricate and complex.</p>
+              <a href="https://www.researchgate.net/publication/315481846_Thermal_Photogrammetric_Imaging_A_New_Technique_for_Monitoring_Dome_Eruptions" target="_blank" rel="noopener noreferrer">
+                <image class="pubicon" alt="Cool publication" src="img/pub/v/thiele17.png"></image></a>
+              <a href="https://www.researchgate.net/publication/332880080_Re-activation_of_magma_pathways_Insights_from_multiple-dykes_on_La_Palma_Canary_Islands" target="_blank" rel="noopener noreferrer">
+                <image class="pubicon" alt="Cool publication" src="img/pub/v/thiele19b.png"></image></a>
+              <a href="https://www.researchgate.net/publication/344680284_Dyke_apertures_record_stress_accumulation_during_sustained_volcanism" target="_blank" rel="noopener noreferrer">
+                <image class="pubicon" alt="Cool publication" src="img/pub/v/thiele20.png"></image></a>
+          </div>
+        </div>
+
+          <div class="swiper-slide centerbox">
+            <div class="item-text">
+              <p><b>Structural Geology</b></p>
+              <p>One of the oldest geoscience disciplines, structural geology is key to understanding
+                 rock failure and fluid flow in the earth. This helps predict earthquakes and landslides, find
+                 ore deposits and, soon, capture and store carbon underground. </p>
+                 <a href="https://www.researchgate.net/publication/277253691_Insights_into_the_Mechanics_of_En-Echelon_Sigmoidal_Vein_Formation_using_Ultra-High_Resolution_Photogrammetry_and_Computed_Tomography" target="_blank" rel="noopener noreferrer">
+                   <image class="pubicon" alt="Cool publication" src="img/pub/sg/thiele15.png"></image></a>
+                 <a href="https://www.researchgate.net/publication/267630688_Ground-based_and_UAV-Based_photogrammetry_A_multi-scale_high-resolution_mapping_tool_for_Structural_Geology_and_Paleoseismology" target="_blank" rel="noopener noreferrer">
+                   <image class="pubicon" alt="Cool publication" src="img/pub/sg/bemis14.png"></image></a>
+                 <a href="https://www.researchgate.net/publication/331630711_Extraction_of_high-resolution_structural_orientations_from_digital_data_A_Bayesian_approach" target="_blank" rel="noopener noreferrer">
+                   <image class="pubicon" alt="Cool publication" src="img/pub/sg/thiele19.png"></image></a>
+            </div>
+          </div>
+
+          <div class="swiper-slide centerbox">
+            <div class="item-text">
+              <p><b>UAV Remote Sensing</b></p>
+              <p>Drones allow earth observation at unprecedented resolution and accuracy. But, extracting
+                meaningful information from these datasets, and so building scientific understanding, remains
+                a significant challenge.
+
+                <a href="https://www.researchgate.net/publication/267630688_Ground-based_and_UAV-Based_photogrammetry_A_multi-scale_high-resolution_mapping_tool_for_Structural_Geology_and_Paleoseismology" target="_blank" rel="noopener noreferrer">
+                  <image class="pubicon" alt="Cool publication" src="img/pub/sg/bemis14.png"></image></a>
+                <a href="https://www.researchgate.net/publication/319129566_Rapid_semi-automatic_fracture_and_contact_mapping_for_point_clouds_images_and_geophysical_data" target="_blank" rel="noopener noreferrer">
+                  <image class="pubicon" alt="Cool publication" src="img/pub/uav/thiele17b.png"></image></a>
+                <a href="https://www.researchgate.net/publication/330664709_Review_of_drones_photogrammetry_and_emerging_sensor_technology_for_the_study_of_dykes_Best_practises_and_future_potential" target="_blank" rel="noopener noreferrer">
+                  <image class="pubicon" alt="Cool publication" src="img/pub/uav/dering19.png"></image></a>
+
+                </p>
+            </div>
+          </div>
+
+          <div class="swiper-slide centerbox">
+            <div class="item-text">
+              <p><b>3-D modelling and uncertainty</b></p>
+              <p>The Earth is 3-D, and mostly underground. This means the geometry of faults, ore-deposits and reservoirs,
+                must be inferred from sparse surface observations, drillholes, and ambiguous geophysical measurements. Sophisticated
+                statistical and geometric methods are needed to make predictions and manage uncertainty.</p>
+
+                <a href="https://www.researchgate.net/publication/306462728_The_topology_of_geology_1_Topological_analysis" target="_blank" rel="noopener noreferrer">
+                  <image class="pubicon" alt="Cool publication" src="img/pub/3d/thiele16a.png"></image></a>
+                <a href="https://www.researchgate.net/publication/306462933_The_topology_of_geology_2_Topological_uncertainty" target="_blank" rel="noopener noreferrer">
+                  <image class="pubicon" alt="Cool publication" src="img/pub/3d/thiele16b.png"></image></a>
+                <a href="https://www.researchgate.net/publication/298144068_Pynoddy_10_An_experimental_platform_for_automated_3-D_kinematic_and_potential_field_modelling" target="_blank" rel="noopener noreferrer">
+                  <image class="pubicon" alt="Cool publication" src="img/pub/3d/wellmann16.png"></image></a>
+
+
+            </div>
+          </div>
+
+
+          </div></div></div>
+
+          <!-- Add Arrows -->
+          <div class="swiper-button-next  mousepop"></div>
+          <div class="swiper-button-prev  mousepop"></div>
+          <div class="swiper-pagination swiper-pagination-h"></div>
+      </div>
+
+      <div class="swiper-slide"> <div class="horizontal-bar vcenter">
+        <div class="title-text">
+            <p><b>Maybe I can help with</b></p>
+        </div>
+        <div class="swiper-container swiper-container-h"><div class="swiper-wrapper">
+
+            <div class="swiper-slide centerbox">
+              <div class="item-text">
+            <p><b>Bespoke data analysis</b></p>
+            <p>With a PhD in Geology and 15 years of programming experience
+              I can leverage my domain knowledge and technical skills to help
+              integrate diverse geoscience datasets and crack tough analysis problems. </p>
+            </div></div>
+
+            <div class="swiper-slide centerbox">
+              <div class="item-text">
+                <p><b>Structural Geology/Geophysics</b></p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide centerbox">
+              <div class="item-text">
+                <p><b>GIS programming</b></p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.</p>
+              </div>
+            </div>
+
+            <div class="swiper-slide centerbox">
+              <div class="item-text">
+                <p><b>3-D visualisation and analysis</b></p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                  sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.</p>
+              </div>
+            </div>
+
+          </div></div></div>
+
+          <!-- Add Arrows -->
+          <div class="swiper-button-next  mousepop"></div>
+          <div class="swiper-button-prev  mousepop"></div>
+          <div class="swiper-pagination swiper-pagination-h"></div>
       </div>
 
       <!-- Page 1 -->
-      <div class="swiper-slide", id="pg1">
-        <div class="toptext">
-            <p>
-            <b>Interests and experience</b><br/>
-            <i>I've had the pleasure to work on:</i>
-            </p>
+      <div class="swiper-slide"> <div class="horizontal-bar vcenter">
+        <div class="title-text">
+            <p><b>Web apps</b></p>
         </div>
-        <div class="swiper-container swiper-container-h">
-          <div class="swiper-wrapper">
+        <div class="swiper-container swiper-container-h"><div class="swiper-wrapper">
+
             <div class="swiper-slide centerbox">
-              <div class="maintext">
-            <p><b>Content 1a</b></p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-              sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat.</p>
-            </div></div>
-            <div class="swiper-slide centerbox">
-              <div class="maintext">
-                <p><b>Content 1b</b></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat.</p>
-              </div></div>
-            <div class="swiper-slide centerbox">
-              <div class="maintext">
-                <p><b>Content 1c</b></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat.</p>
-            </div>
-          </div>
-          </div>
+              <div class="mousepop">
+              <image class="large-icon" alt="App1" src="https://upload.wikimedia.org/wikipedia/commons/b/b5/3D_icon_128x128.png"></image>
+              <div class="item-text">
+              <p><b>App 1</b></p>
+              <p><i>App description</i> </p>
+              </div></div></div>
+
+              <div class="swiper-slide centerbox">
+                <div class="mousepop">
+                <image class="large-icon" alt="App1" src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Dolfga_Icon.png"></image>
+                <div class="item-text">
+                <p><b>App 2</b></p>
+                <p><i>App description</i> </p>
+              </div></div></div>
+
+          </div></div></div>
+
           <!-- Add Arrows -->
           <div class="swiper-button-next  mousepop"></div>
           <div class="swiper-button-prev  mousepop"></div>
           <div class="swiper-pagination swiper-pagination-h"></div>
-        </div>
-      </div>
-      <!-- Page 2 -->
-      <div class="swiper-slide" id="pg2">
-        <div class="toptext">
-            <p>
-            <b>Consulting</b><br/>
-            <i>A geo that codes can:</i>
-            </p>
-        </div>
-        <div class="swiper-container swiper-container-h">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide centerbox">
-                <div class="maintext">
-                  <p><b>Content 2a</b></p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua. Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat.</p>
-                </div>
-              </div>
-            <div class="swiper-slide centerbox">
-              <div class="maintext">
-                <p><b>Content 2b</b></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat.</p>
-              </div>
-            </div>
-            <div class="swiper-slide centerbox">
-              <div class="maintext">
-                <p><b>Content 2c</b></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat.</p>
-              </div>
-            </div>
-          </div>
-          <!-- Add Arrows -->
-          <div class="swiper-button-next  mousepop"></div>
-          <div class="swiper-button-prev  mousepop"></div>
-          <div class="swiper-pagination swiper-pagination-h"></div>
-        </div>
       </div>
 
-      <!-- Page 3 -->
-      <div class="swiper-slide", id="pg3">
-        <div class="toptext">
-            <p>
-            <b>Digital playground</b><br/>
-            <i>Web apps for science and fun:</i>
-            </p>
-        </div>
-        <div class="swiper-container swiper-container-h">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide centerbox">
-                <div class="maintext">
-                  <p><b>Content 3a</b></p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua. Ut enim ad minim veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                    consequat.</p>
-                </div>
-              </div>
-            <div class="swiper-slide centerbox">
-              <div class="maintext">
-                <p><b>Content 3b</b></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat.</p>
-              </div>
-            </div>
-            <div class="swiper-slidecenterbox">
-              <div class="maintext">
-                <p><b>Content 3c</b></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat.</p>
-              </div>
-            </div>
-          </div>
-          <!-- Add Arrows -->
-          <div class="swiper-button-next mousepop"></div>
-          <div class="swiper-button-prev mousepop"></div>
-          <div class="swiper-pagination swiper-pagination-h"></div>
-        </div>
-      </div>
 
       <!-- Page 4 -->
-      <div class="swiper-slide", id="pg3">
-        <div class="swiper-container swiper-contacts">
-          <div class="swiper-wrapper">
+      <div class="swiper-slide"><div class = "vcenter">
+        <div class="swiper-container swiper-contacts"> <div class="swiper-wrapper">
 
             <div class="swiper-slide centerbox">
-              <div class="contact">
-                <p><b>LinkedIn</b></p>
+              <div class="contact-trp"><p><b>LinkedIn</b></p>
                 <div class="LI-profile-badge"  data-version="v1" data-size="small" data-locale="en_US" data-type="vertical" data-theme="dark" data-vanity="sam-thiele-991ab689"><a class="LI-simple-link" href='https://de.linkedin.com/in/sam-thiele-991ab689?trk=profile-badge'>Sam Thiele</a></div>
               </div>
             </div>
 
-            <div class="swiper-slide centerbox">
-              <div class="contact">
-                <p><b>Twitter</b></p>
+            <div class="swiper-slide centerbox"> <div class="contact-trp"><p><b>Twitter</b></p>
                 <a class="twitter-timeline" id='twitter' data-lang="en" data-width="350" data-height="350" data-theme="dark" href="https://twitter.com/thiele_et_al">Tweets by @thiele_et_al</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
               </div>
             </div>
 
-            <div class="swiper-slide centerbox">
-              <div class="contact">
-                <p><b>Publications</b></p>
-                <div class="contacttext">
-                  <br/>
+            <div class="swiper-slide centerbox"><div class="contact-trp"><p><b>Publications</b></p>
+                <div class="contact-opq"> <br/>
                   <p><a href="https://www.researchgate.net/profile/Sam_Thiele/amp" style="vertical-align:top;">
-                    <img class="mousepop" src="https://www.researchgate.net/favicon-96x96.png" style="height:2.5em;width:2.5em;" alt="ResearchGate">
+                    <img class="mousepop small-icon" src="https://www.researchgate.net/favicon-96x96.png" alt="ResearchGate">
                   </a><br/>
                   <b>ResearchGate</b></p>
 
                   <p><a href="https://orcid.org/0000-0003-4169-0207" style="vertical-align:top;">
-                    <img class="mousepop" src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" style="height:2.5em;width:2.5em;" alt="ORCID iD"/>
+                    <img class="mousepop small-icon" src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" alt="ORCID iD"/>
                   </a><br/>
                   <b>ORCID</b></p>
 
                   <p><a href="https://www.scopus.com/authid/detail.uri?authorId=57169974700" style="vertical-align:top;">
-                    <img class="mousepop", src="./img/sc.png" style="height:2.5em;width:2.5em;border-radius:5px;" alt="Scopus"/>
+                    <img class="mousepop small-icon", src="./img/sc.png" alt="Scopus"/>
                   </a><br/>
                   <b>Scopus</b></p>
-                  <br/>
-                </div>
-              </div>
-            </div>
+                <br/></div>
+            </div></div>
 
 
             <div class="swiper-slide centerbox">
-              <div class="contact">
-              <p><b>Old school</b></p>
-              <div class="contacttext">
-                <br/>
+              <div class="contact-trp"> <p><b>Old school</b></p>
+              <div class="contact-opq"> <br/>
                 <p><a href="mailto:sam.thiele01@gmail.com" style="vertical-align:top;">
-                  <img class="mousepop" src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" style="height:2.5em;width:2.5em;" alt="ResearchGate">
-                </a><br/>
-                <b>Email</b></p>
+                  <img class="mousepop small-icon" src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="ResearchGate">
+                </a><br/><b>Email</b></p>
 
                 <p><a href="tel:+4917656987350" style="vertical-align:top;">
-                  <img class="mousepop" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Phone_Shiny_Icon.svg" style="height:2.5em;width:2.5em;" alt="ResearchGate">
-                </a><br/>
-                <b>Phone</b></p>
+                  <img class="mousepop small-icon" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Phone_Shiny_Icon.svg" alt="ResearchGate">
+                </a><br/><b>Phone</b></p>
 
                 <p><a href="https://flypigeon.co/" style="vertical-align:top;">
-                  <img class="mousepop" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Emoji_u1f54a.svg" style="height:2.5em;width:2.5em;" alt="ResearchGate">
-                </a><br/>
-                <b>Pigeon</b></p>
-                <br/>
+                  <img class="mousepop small-icon" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Emoji_u1f54a.svg" alt="ResearchGate">
+                </a><br/><b>Pigeon</b></p><br/>
               </div>
             </div>
             </div>
+
           </div>
 
           <!-- Add Arrows -->
-          <div class="swiper-button-next mousepop"></div>
-          <div class="swiper-button-prev mousepop"></div>
-        </div>
-        <div class="floattext" id="contacttext">
+           <div class="swiper-button-next mousepop"></div>
+           <div class="swiper-button-prev mousepop"></div>
+         </div>
+         <div class="emphasise-text">
             <p><b>Please get in touch</b><p><i>Via your favourite platform</i></p> </p>
-        </div>
-      </div>
-      </div>
-      <!-- Add Pagination -->
-      <div class="swiper-pagination swiper-pagination-v"></div>
-    </div>
+         </div>
+       </div></div> <!-- Page 4 -->
+
+      </div> <!-- Contents -->
+      <div class="swiper-pagination swiper-pagination-v"></div><!-- Add Pagination -->
+    </div><!-- End of main slider -->
 </body>
 
-
-<!-- partial -->
-  <script src='https://swiperjs.com/package/swiper-bundle.min.js'></script><script  src="./script.js"></script>
-  <script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
-
+<!-- Javascript -->
+<script type="text/javascript" src='https://swiperjs.com/package/swiper-bundle.min.js'></script>
+<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+<script type="text/javascript" src="./script.js"></script>
 </html>
