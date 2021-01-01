@@ -103,8 +103,8 @@ html,
     .horizontal-bar { /* A vertically centered horizontal bar */
       background: rgb(204, 204, 204); /* Fallback for older browsers without RGBA-support */
       background: var(--floatcolor);
-      border-top: 4px solid var(--edgecolor);
-      border-bottom: 4px solid var(--edgecolor);
+      /* border-top: 4px solid var(--edgecolor); */
+      /*  border-bottom: 4px solid var(--edgecolor); */
       max-height: 450px;
     }
     .drop-shadow {
