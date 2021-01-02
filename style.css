@@ -176,6 +176,12 @@ html,
       background: #292F33;
       --swiper-theme-color: lightgray;
     }
+
+    .swiper-pagination-h{
+      padding-top: 50px;
+      transform: translateY(50%);
+      z-index: 0;
+    }
     .swiper-pagination-bullet {
       width: 25px;
       height: 25px;
@@ -186,6 +192,7 @@ html,
       opacity: 1;
       background: var(--floatcolor);
       transition: transform .2s; /* Hover Animation */
+      z-index: 0;
     }
     .swiper-pagination-bullet:hover {
       transform: scale(1.2); /* (125% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
