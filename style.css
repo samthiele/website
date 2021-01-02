@@ -4,8 +4,8 @@ html,
 
     body {
       background: black;
-      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-      font-size: 14px;
+      font-family: "Avenir Light", Avenir, Calibri, Arial, sans-serif;
+      font-size: 16px;
       line-height: 2em;
       color: white;
       text-align: center;
@@ -20,8 +20,8 @@ html,
       --floatcolor: rgba(0, 0, 0, 0.4);
       --edgecolor: rgba(255, 255, 255, 0.4);
       --shadowcolor: rgba(0, 0, 0, 0.4);
-      --titlesize: 18;
-      --normalsize: 15;
+      --titlesize: 20;
+      --normalsize: 16;
       --maxwidth: 1250px;
       --swiper-theme-color: lightgray;
     }
@@ -114,6 +114,7 @@ html,
 
     /* Text styles */
     .title-text {
+      font-family: Avenir, Calibri, Arial, sans-serif;
       font-size: var(--titlesize);
       padding-left: 15px;
       padding-right: 15px;
@@ -131,12 +132,32 @@ html,
     }
 
     .emphasise-text {
+      font-family: Avenir, Calibri, Arial, sans-serif;
       font-size: var(--titlesize);
       padding-left: 15px;
       padding-right: 15px;
       padding-bottom: 15px;
       line-height: 2em;
     } /*line-height: 32px;*/
+
+    /* Links */
+    a:link {
+      color: white;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: lightgray;
+      background-color: transparent;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: 	#ffba00;
+      background-color: transparent;
+      text-decoration: underline;
+    }
 
     /* Swipers */
     .swiper-container {
