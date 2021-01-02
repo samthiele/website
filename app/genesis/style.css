@@ -16,6 +16,7 @@ html,
       top: 50%;
       transform: translateY(-50%);
     }
+
     .centerbox{
       width: 100%;
 
@@ -35,9 +36,7 @@ html,
     }
     .genesis {
       height: 80vh;
-      width: 80vh;
       max-height: min(80vh,80vw);
-      max-width: min(80vh,80vw);
       background-color: white;
 
       box-shadow: 15px 15px 15px 10px rgba(0, 0, 0, 0.2);
@@ -56,3 +55,12 @@ html,
       -webkit-align-items: center;
       align-items: center;
     }
+
+    /* For text editing */
+    .textedit {
+    text-align: left;
+    /* For text editing */
+    }
+    /*.insideforeign {
+        display: inline-block;
+    }*/
