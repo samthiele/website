@@ -60,25 +60,3 @@ var swiperC = new Swiper('.swiper-contacts', {
       keyboard: true,
       speed: 700,
 });
-var swiperP = new Swiper('.swiper-publications', {
-      spaceBetween: 25,
-      effect: 'coverflow',
-      coverflowEffect: {
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: false,
-          },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      centeredSlides: true,
-      slidesPerView: 3,
-      loop: true,
-      mousewheel: false,
-      grabCursor: true,
-      keyboard: false,
-      speed: 700,
-});

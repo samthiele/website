@@ -200,15 +200,9 @@ html,
     }
 
     /* Publications */
-    .swiper-publications{
-      max-width: 600px;
-      resize: both;
-      margin-bottom: 1.5em;
-      margin-top: 1.5em;
-    }
-
     .pubicon{
-      max-height: 170px;
+      max-height: 30vw;
+      height: 200px;
       width: auto;
       resize: both;
       padding-top: 5px;
