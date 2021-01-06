@@ -17,28 +17,25 @@ html,
       transform: translateY(-50%);
     }
 
-    .centerbox{
-      width: 100%;
-
-      /*Center slide text vertically */
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: -webkit-flex;
-      display: flex;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      align-items: center;
+    .hcenter{ /* center contents horizontally */
+      position: absolute;
+      height: 100%;
+      left: 50%;
+      transform: translateX(-50%);
     }
-    .genesis {
-      height: 80vh;
-      max-height: min(80vh,80vw);
-      background-color: white;
 
+    .noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+                                  }
+
+    .genesis {
+      background-color: white;
       box-shadow: 15px 15px 15px 10px rgba(0, 0, 0, 0.2);
 
       /*Center slide text vertically */
@@ -58,9 +55,8 @@ html,
 
     /* For text editing */
     .textedit {
-    text-align: left;
-    /* For text editing */
+      text-align: left;
     }
-    /*.insideforeign {
-        display: inline-block;
-    }*/
+
+    /* For drag/drop *
+    

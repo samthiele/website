@@ -7,15 +7,24 @@
 </head>
 
 <body>
-  <div class='vcenter'>
+  <div>
     <p><b> Genesis App </b></p>
-    <p><i> Build your own paragenetic sequence diagram </i></p>
+    <p> Build your own paragenetic sequence diagram <br/>
+    <i>(Click to edit labels. Double-click to remove. Left/right click to increase/decrease weight.)</i></p>
     <p>
-      <div id='container' class='centerbox'> <!--onchange="./script.js"-->
-        <div class='genesis' id='genesis'>
+    <input type="radio" id="radiotri" onclick="toggleTri()" checked> Triangles </input>
+    <input type="radio" id="radioline" onclick="toggleTri()"> Lines </input>
+    <button type="button" id="download" onclick="download()"> Export SVG </button>
+    <button type="button" id="savebutton" onclick="save()"> Save JSON</button>
+    <button type="button" id="loadbutton" onclick="load()"> Load JSON </button>
+    <input type="file" id="fileElem" accept="*.json" onchange="readJSON()" style="display:none"/> <!-- hidden file chooser !-->
+    </p><p>
+      <div id='container' class='hcenter'> <!--onchange="./script.js"-->
+        <div class='genesis noselect' id='genesis'>
         </div>
       </div>
     </p>
+
   </div>
 </body>
 
