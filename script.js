@@ -24,6 +24,7 @@ var swiperH = new Swiper('.swiper-container-h', {
       keyboard: true,
       speed: 700,
 });
+
 var swiperV = new Swiper('.swiper-container-v', {
   direction: 'vertical',
   parallax: true,

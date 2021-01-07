@@ -1,7 +1,7 @@
 // default properties
 var stages = ["Vein", "Proximal", "Distal", "Unaltered"];
-var thickness = [ [1,1,1,1], // line thickness for mineral A in each zone
-                  [0,0,1,1],
+var thickness = [ [3,1,1,1], // line thickness for mineral A in each zone
+                  [2,0,1,1],
                   [0,1,2,3],
                   [0,2,2,1] ];
 var minerals = ["Mineral A", "Mineral B", "Mineral C", "Mineral D"];
