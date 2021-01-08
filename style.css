@@ -70,7 +70,12 @@ html,
       top: 50%;
       transform: translateY(-50%);
     }
-
+    .softicon{
+      /*max-height: 150px;*/
+      max-width: min(150px, 20%);
+      /*padding-top: 15px;
+      padding-bottom: 15px;*/
+    }
     .centerbox {
       width: 100%;
       height: 100%; /*88%;*/
