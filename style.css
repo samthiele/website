@@ -96,9 +96,8 @@ html,
     }
     .pin-bottom {
       position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
+      bottom: 1em;
+      width: 100%;
     }
     /* Containers */
     .floating-cloud{
