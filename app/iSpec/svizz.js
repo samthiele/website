@@ -12,7 +12,7 @@ function hslToHex(h, s, l)
 }
 
 
-function plot_spectra( parent, spectra, width=900, height=400, add_range_selectors = false )
+function plot_spectra( parent, spectra, width=900, height=400, add_range_selectors = false, plot_position=true )
 // add a D3 line plot to the specified parent
 // that displays the passed spectra.
 {
@@ -158,6 +158,63 @@ function plot_spectra( parent, spectra, width=900, height=400, add_range_selecto
 
     // apply ranges to line
     rescale(svg, x, y);
+
+
+    if (plot_position)
+    {
+
+       console.log("adding position");
+
+       // Create the text that travels along the curve of chart
+       var focusText = svg
+         .append('g')
+         .append('text')
+           .style("opacity", 0)
+           .style('font-size', 14)
+           .attr("alignment-baseline", "middle");
+
+         // Create a rect on top of the svg area: this rectangle recovers mouse position
+        //svg
+        //  .append('rect')
+        //  .style("fill", "none")
+        //  .style("pointer-events", "all")
+        //  .attr('width', width)
+        //  .attr('height', height)
+        //  .on('mouseover', mouseover)
+        //  .on('mousemove', mousemove)
+        //  .on('mouseout', mouseout);
+        svg.on('mouseover', mouseover)
+           .on('mousemove', mousemove)
+           .on('mouseout', mouseout);
+        // What happens when the mouse move -> show the annotations at the right positions.
+        function mouseover() {
+          focusText.style("opacity",0.5);
+        }
+
+        function mousemove() {
+            // recover coordinate we need
+            var xpos = d3.mouse(this)[0];
+            var ypos =  d3.mouse(this)[1];
+
+            if ( x.invert(xpos) < x.domain()[0] + (x.domain()[1] - x.domain()[0]) / 2 ) {
+              focusText
+                .html( (y.invert(ypos)*100).toFixed(0) + "% at " + x.invert(xpos).toFixed(0) + " nm" )
+                .attr("x", xpos+15)
+                .attr("y", ypos)
+                .attr("text-anchor", "start");
+            } else {
+                focusText
+                  .html( (y.invert(ypos)*100).toFixed(0) + "% at " + x.invert(xpos).toFixed(0) + " nm" )
+                  .attr("x", xpos-15)
+                  .attr("y", ypos)
+                  .attr("text-anchor", "end");
+            }
+
+          }
+        function mouseout() {
+            focusText.style("opacity", 0);
+        }
+    }
 
     // setup brushing
     var brush = d3.brushX()                   // Add the brush feature using the d3.brush function
