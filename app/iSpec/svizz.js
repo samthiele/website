@@ -196,20 +196,11 @@ function plot_spectra( parent, spectra, width=900, height=400, add_range_selecto
             var xpos = d3.mouse(this)[0];
             var ypos =  d3.mouse(this)[1];
 
-            if ( x.invert(xpos) < x.domain()[0] + (x.domain()[1] - x.domain()[0]) / 2 ) {
-              focusText
-                .html( (y.invert(ypos)*100).toFixed(0) + "% at " + x.invert(xpos).toFixed(0) + " nm" )
-                .attr("x", xpos+15)
-                .attr("y", ypos)
-                .attr("text-anchor", "start");
-            } else {
-                focusText
-                  .html( (y.invert(ypos)*100).toFixed(0) + "% at " + x.invert(xpos).toFixed(0) + " nm" )
-                  .attr("x", xpos-15)
-                  .attr("y", ypos)
-                  .attr("text-anchor", "end");
-            }
-
+            focusText
+              .html( (y.invert(ypos)*100).toFixed(0) + "% at " + x.invert(xpos).toFixed(0) + " nm" )
+              .attr("x", 15)
+              .attr("y", 15)
+              .attr("text-anchor", "start");
           }
         function mouseout() {
             focusText.style("opacity", 0);
