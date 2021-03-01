@@ -1,0 +1,101 @@
+html,
+
+body {
+  background: lightgray;
+  font-family: "Avenir Light", Avenir, Calibri, Arial, sans-serif;
+  font-size: 20px;
+  line-height: 2em;
+  color: black;
+  text-align: left;
+  overflow-y: scroll;
+}
+
+h1 {
+  font-size: 28px;
+}
+
+.smalltext
+{
+  font-size: 16px;
+}
+
+#outer
+{
+  background: white;
+  max-width: 1000px;
+  min-width: 500px;
+  width: 75%;
+  height: auto;
+  box-shadow: 15px 15px 15px 10px rgba(0, 0, 0, 0.2);
+  padding: 0.5em 2em 0.5em 2em;
+}
+
+#query_box {
+    font-size: 26px;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+
+#settings_box {
+    font-size: 20px;
+    margin-left: 3em;
+    text-align: center;
+}
+
+#spectra_box {
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  border-bottom: 1px solid lightgray;
+}
+
+#query {
+  width: calc(100% - 6em);
+  font-weight: normal;
+  font-size: 18px;
+  padding: 0.5em;
+  font-size: 22px;
+}
+
+#query:placeholder-shown {
+ font-style: italic;
+}
+.vcenter{ /* center contents vertically */
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hcenter{ /* center contents horizontally */
+  position: absolute;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.loader {
+  z-index: 1;
+  border-top: 16px solid blue;
+  border-right: 16px solid green;
+  border-bottom: 16px solid red;
+  border-left: 16px solid pink;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  -webkit-animation: spin 3s linear infinite;
+  animation: spin 3s linear infinite;
+  opacity: 0.5;
+  position: absolute;
+  left: calc( 50% - 32px ) ;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
