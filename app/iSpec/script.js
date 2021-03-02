@@ -64,11 +64,16 @@ function queryAPI(library, minerals, features)
      .then( function(result) { // once loaded query result
         query_result = decode_query( JSON.parse(JSON.parse(result).body ) ); // decode base64 arrays
         document.getElementById('spectraviz').innerHTML = '' // remove spinner
-        plot_spectra("#spectraviz",
-                    query_result,
-                    width=parseInt( getComputedStyle( $('#outer')[0] ).width ) - 50,
-                    height=400,
-                    add_range_selectors = true); // plot results
+        if (Object.keys( query_result.wav ).length == 0)
+        {
+          document.getElementById('spectraviz').innerHTML = 'Search returned no results.'; // add no result message
+        } else { // valid result
+            plot_spectra("#spectraviz",
+                        query_result,
+                        width=parseInt( getComputedStyle( $('#outer')[0] ).width ) - 50,
+                        height=400,
+                        add_range_selectors = true); // plot results
+        }
       } )
      .catch(error => console.log('error', error));
 }

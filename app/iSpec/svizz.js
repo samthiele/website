@@ -162,9 +162,6 @@ function plot_spectra( parent, spectra, width=900, height=400, add_range_selecto
 
     if (plot_position)
     {
-
-       console.log("adding position");
-
        // Create the text that travels along the curve of chart
        var focusText = svg
          .append('g')
