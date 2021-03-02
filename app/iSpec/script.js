@@ -64,15 +64,64 @@ function queryAPI(library, minerals, features)
      .then( function(result) { // once loaded query result
         query_result = decode_query( JSON.parse(JSON.parse(result).body ) ); // decode base64 arrays
         document.getElementById('spectraviz').innerHTML = '' // remove spinner
+
         if (Object.keys( query_result.wav ).length == 0)
         {
           document.getElementById('spectraviz').innerHTML = 'Search returned no results.'; // add no result message
         } else { // valid result
+
+            // plot spectra
             plot_spectra("#spectraviz",
                         query_result,
                         width=parseInt( getComputedStyle( $('#outer')[0] ).width ) - 50,
                         height=400,
-                        add_range_selectors = true); // plot results
+                        add_range_selectors = true);
+
+            // add list of results
+            let mlist = document.getElementById('mineral_list');
+            for (var i = 0; i < query_result.minerals.length; i++ )
+            {
+              let mineral = query_result.minerals[i];
+              if (query_result[mineral].length > 0)
+              {
+                let mresult = document.createElement("div");
+
+                //get and set background colour
+                let mc = hslToHex( 20 + (i / query_result.minerals.length) * 340, 80, 80 );
+                if (query_result.colours) { mc = query_result.colours[i];  }
+                mresult.style.backgroundColor = mc;
+                mresult.classList.add('searchResult');
+
+                // calculate stroke
+                let lwidth = 1.5;
+                if (query_result.width) { lwidth = query_result.width[m]; }
+
+                // add hover and click events
+                mresult.addEventListener("mouseenter", function(event){
+                  document.getElementById(mineral).style.strokeWidth = lwidth*1.5;
+                } );
+                mresult.addEventListener("mouseout", function(event){
+                  document.getElementById(mineral).style.strokeWidth = lwidth;
+                 } );
+                mresult.addEventListener("click", function(event){
+                  if (mresult.style.backgroundColor == 'cyan') { // deselect
+                    mresult.style.backgroundColor = mc;
+                    document.getElementById(mineral).style.stroke = mc;
+                  } else { // select
+                    mresult.style.backgroundColor = 'cyan';
+                    document.getElementById(mineral).style.stroke = 'black';
+                }});
+
+                //add text
+                let mineral = query_result.minerals[i];
+                let family = "other";
+                if (query_result.family) {family = query_result.family[i]};
+                let score = (query_result.score[i] * 100).toFixed(0);
+                mresult.innerHTML =  "[ " + score + "% match ]: " + mineral + "&nbsp&nbsp (" + family + ")";
+
+                mlist.appendChild(mresult);
+              }
+            }
         }
       } )
      .catch(error => console.log('error', error));
@@ -102,7 +151,8 @@ function doSearch()
 
     // todo: check libraries to query
 
-    // add loader spinner
+    // add loader spinner and remove previous results
+    document.getElementById('mineral_list').innerHTML = ''; // remove previous results
     document.getElementById('spectraviz').innerHTML = '<div class="loader"></div><br/><br/>';
 
     // do query
