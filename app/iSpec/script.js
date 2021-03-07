@@ -85,7 +85,16 @@ function queryAPI(library, minerals, features , conf, limit)
                 return Math.max(a, b);
             });
             query_result.alpha = query_result['score'].map( function(e) { return e / maxS });
-            query_result.positions = query.features;
+
+            // add search positions to plot
+            if (query.features)
+            {
+              query_result.positions = [];
+              for (i = 0; i < query.features.length; i++)
+              {
+                query_result.positions.push( [ query.features[i], query.delta[i] ] );
+              }
+            }
 
             // plot spectra
             plot_spectra("#spectraviz",
@@ -193,7 +202,7 @@ function doSearch()
     }
 
     // split query on space, comma or colon
-    searchtxt.replaceAll("!", "-"); // replace ! with -
+    searchtxt = searchtxt.replaceAll("!", "-"); // replace ! with -
     let elements = searchtxt.split(/[\s,;]+/);
     for (let i = 0; i < elements.length; i++)
     {

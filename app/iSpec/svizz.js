@@ -144,9 +144,53 @@ function plot_spectra( parent, spectra, width=900, height=400, add_range_selecto
     {
       for (let p = 0; p < spectra.positions.length; p++)
       {
+        // get position
+        if (Array.isArray(spectra.positions[p]))
+        {
+            var w = spectra.positions[p][0];
+            var delta = Math.abs( spectra.positions[p][1] );
+        } else {
+            var w = spectra.positions[p];
+            var delta = null;
+        }
+        
+        // calculate colour
+        let c = 'black'; // default colour
+        if (w < 0) { c = 'red'; }
+
+        // add filled rectangle?
+        if (delta) {
+          var xy = [{x: Math.abs(w)-delta, y:-0.1}, {x: Math.abs(w)-delta, y:1.1},
+                    {x: Math.abs(w)+delta, y:1.1}, {x: Math.abs(w)+delta, y:-0.1} ];
+          svg.append("path")
+             .datum(xy)
+             .attr("class","line")
+             .attr("fill",c)
+             .attr("stroke",'none')
+             .attr("fill-opacity",0.2);
+        }
+
+        // add central line
+        var xy = [{x: Math.abs(w), y:-0.1},{x: Math.abs(w), y:1.1} ];
+        svg.append("path")
+           .datum(xy)
+           .attr("class","line")
+           .attr("fill","none")
+           .attr("stroke",c)
+           .attr("stroke-opacity",0.8)
+           .attr("stroke-width",1.25);
+      }
+
+    }
+
+    // add boxes lines [ spectral ranges ]
+    if (spectra.ranges)
+    {
+      for (let p = 0; p < spectra.boxes.length; p++)
+      {
         let c = 'black';
-        if (spectra.positions[p] < 0) { c = 'red'; }
-        let w = Math.abs( spectra.positions[p] );
+        if (spectra.positions[p][0] < 0) { c = 'red'; }
+        let w0 = Math.abs( spectra.positions[p][0] );
         var xy = [{x: w, y:-0.1},{x: w, y:1.1} ];
         svg.append("path")
            .datum(xy)
