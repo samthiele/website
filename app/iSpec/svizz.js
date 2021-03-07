@@ -58,9 +58,9 @@ function plot_spectra( parent, spectra, width=900, height=400, add_range_selecto
     var range = spectra.default_range || "SWIR";
     var style = spectra.style || null;
 
-    // loop through minerals and gather data
+    // loop (backwards) through minerals and add data to plot
     var xy_all = [] // store all xy for quickly calculating ranges
-    for (var m = 0; m < spectra.minerals.length; m++ )
+    for (var m = spectra.minerals.length-1; m >= 0; m-- )
     {
       // get mineral name
       let mineral = spectra.minerals[m];
@@ -103,7 +103,6 @@ function plot_spectra( parent, spectra, width=900, height=400, add_range_selecto
           }
       }
 
-
       // create group for this mineral
       var M = svg.append('g')
         .attr("clip-path", "url(#clip)") // apply clipping
@@ -112,7 +111,9 @@ function plot_spectra( parent, spectra, width=900, height=400, add_range_selecto
         .attr("stroke-width", lwidth) // width
         .attr("fill-opacity", alpha )
         .attr("stroke-opacity", alpha );
-      for (var s = 0; s < spectra[mineral].length; s++ ) // loop through each spectra for mineral
+
+      // add spectra lines for each mineral
+      for (var s = 0; s < spectra[mineral].length; s++ ) 
       {
           // get individual spectra data
           var ydata = spectra[mineral][s];
@@ -136,6 +137,26 @@ function plot_spectra( parent, spectra, width=900, height=400, add_range_selecto
             .attr("class", "line")  // add the class line to be able to modify all lines later on.
             .attr("fill", fill)
       }
+    }
+
+    // add vertical lines [ positions ]
+    if (spectra.positions)
+    {
+      for (let p = 0; p < spectra.positions.length; p++)
+      {
+        let c = 'black';
+        if (spectra.positions[p] < 0) { c = 'red'; }
+        let w = Math.abs( spectra.positions[p] );
+        var xy = [{x: w, y:-0.1},{x: w, y:1.1} ];
+        svg.append("path")
+           .datum(xy)
+           .attr("class","line")
+           .attr("fill","none")
+           .attr("stroke",c)
+           .attr("stroke-opacity",0.8)
+           .attr("stroke-width",1.25);
+      }
+
     }
 
     // create the axes with default range
@@ -170,19 +191,11 @@ function plot_spectra( parent, spectra, width=900, height=400, add_range_selecto
            .style('font-size', 14)
            .attr("alignment-baseline", "middle");
 
-         // Create a rect on top of the svg area: this rectangle recovers mouse position
-        //svg
-        //  .append('rect')
-        //  .style("fill", "none")
-        //  .style("pointer-events", "all")
-        //  .attr('width', width)
-        //  .attr('height', height)
-        //  .on('mouseover', mouseover)
-        //  .on('mousemove', mousemove)
-        //  .on('mouseout', mouseout);
+         // capture mouse events
         svg.on('mouseover', mouseover)
            .on('mousemove', mousemove)
            .on('mouseout', mouseout);
+
         // What happens when the mouse move -> show the annotations at the right positions.
         function mouseover() {
           focusText.style("opacity",0.5);
@@ -220,7 +233,7 @@ function plot_spectra( parent, spectra, width=900, height=400, add_range_selecto
         extent = d3.event.selection // get the selected boundaries?
         if(!extent){ // If no selection, back to initial coordinate.
           if (!idleTimeout) return idleTimeout = setTimeout(idled, 350); // This allows to wait a little bit
-            x.domain([ 4,8])
+            x.domain([4,8])
           } else { // Otherwise, update X axis domain
             x.domain([ x.invert(extent[0]), x.invert(extent[1]) ])
             y.domain(d3.extent(xy_all, function(d) { // calculate y range
@@ -231,8 +244,7 @@ function plot_spectra( parent, spectra, width=900, height=400, add_range_selecto
             }
 
         // Update axis and line position
-        xAxis.transition().duration(1000).call(d3.axisBottom(x));
-        rescale(svg, x, y );
+        rescale(svg, x, y, 1000 );
     }
 
     // If user double click, reinitialize the chart
@@ -272,6 +284,10 @@ function plot_spectra( parent, spectra, width=900, height=400, add_range_selecto
 // update all positions based on passed svg object, and d3 axes.
 function rescale(svg, x, y, t=1000)
 {
+
+  // todo - change transition here to work on x-axis for smoother sliding
+  // xAxis.transition().duration(1000).call(d3.axisBottom(x));
+
   d3.selectAll('.line')
   .transition()
   .duration(t)

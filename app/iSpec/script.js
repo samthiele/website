@@ -41,7 +41,7 @@ function decode_query( q )
 }
 
 // define the callAPI function that takes a first name and last name as parameters
-function queryAPI(library, minerals, features)
+function queryAPI(library, minerals, features , limit)
 {
    // instantiate a headers object
    var myHeaders = new Headers();
@@ -49,9 +49,16 @@ function queryAPI(library, minerals, features)
 
    // add content type header to object
    myHeaders.append("Content-Type", "application/json");
-   // using built in JSON utility package turn object to string and store in a variable
-   var raw = JSON.stringify({"library":library,"minerals":minerals});
-   // create a JSON object with parameters for API call and store in a variable
+
+   // build query
+   query = {}
+   query.library = library;
+   query.minerals = minerals;
+   if (features.length > 0){ query.features = features; } // add any features to search with
+   if (limit){ query.mode = 'AND'; } // change feature search to AND [limited] mode
+   var raw = JSON.stringify( query ); // convert query to string
+
+   // create a JSON object with parameters for API call
    var requestOptions = {
        method: 'POST',
        headers: myHeaders,
@@ -70,6 +77,15 @@ function queryAPI(library, minerals, features)
           document.getElementById('spectraviz').innerHTML = 'Search returned no results.'; // add no result message
         } else { // valid result
 
+            // compute alpha values
+            let maxS = query_result['score'].reduce(function(a, b) {
+                if (a == 1.0) { return b }; // ignore 1.0's
+                if (b == 1.0) { return a }; // ignore 1.0's
+                return Math.max(a, b);
+            });
+            query_result.alpha = query_result['score'].map( function(e) { return e / maxS });
+            query_result.positions = query.features;
+            
             // plot spectra
             plot_spectra("#spectraviz",
                         query_result,
@@ -106,10 +122,11 @@ function queryAPI(library, minerals, features)
                 mresult.addEventListener("click", function(event){
                   if (mresult.style.backgroundColor == 'cyan') { // deselect
                     mresult.style.backgroundColor = mc;
-                    document.getElementById(mineral).style.stroke = mc;
+                    //document.getElementById(mineral).style.stroke = mc;
+                    d3.select('#' + mineral).style('stroke', mc).style('stroke-opacity',query_result.alpha[i]);
                   } else { // select
                     mresult.style.backgroundColor = 'cyan';
-                    document.getElementById(mineral).style.stroke = 'black';
+                    d3.select('#' + mineral).raise().style('stroke','black').style('stroke-opacity',1.0);
                 }});
 
                 //add text
@@ -123,10 +140,6 @@ function queryAPI(library, minerals, features)
                 } else {
                   mresult.innerHTML =  "[ " + score + "% match ]: " + name;
                 }
-                
-
-                
-
                 mlist.appendChild(mresult);
               }
             }
@@ -160,17 +173,21 @@ function doSearch()
       }
     }
 
+    // todo: allow maxima queries?
+
     // todo: check libraries to query
+
 
     // add loader spinner and remove previous results
     document.getElementById('mineral_list').innerHTML = ''; // remove previous results
     document.getElementById('spectraviz').innerHTML = '<div class="loader"></div><br/><br/>';
 
     // do query
-    queryAPI( 'USGS', minerals, features );
+    queryAPI( 'USGS', minerals, features, document.getElementById('lmode').checked );
   }
 }
 
+var query; // query will be stored here
 var query_result; // query results will be stored here
 
 // bind search box to doSearch

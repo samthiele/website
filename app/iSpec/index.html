@@ -20,12 +20,13 @@
       <div id = 'settings_box' >
         <p><span>
           <i>Database:</i>
-            <input type="checkbox" id="usgsdb" checked> USGS </input>
-            <input type="checkbox" id="asudb" disabled> ASU </input>
-            <input type="checkbox" id="csirodb" disabled> CSIRO </input>
+            <input type="checkbox" id="usgsdb" checked><span style='color:black'> USGS </span> </input>
+            <input type="checkbox" id="asudb" disabled><span style='color:gray'> ASU </span></input>
+            <input type="checkbox" id="csirodb" disabled><span style='color:gray'> CSIRO </span></input>
             &nbsp; &nbsp; &nbsp;
             <i>Confidence:</i> &#177;<input type='text' id='confidence' value='10' style='width:2em'> <i>nm</i></input>
-        </span></p>
+        </span><br>
+        <span><input type="checkbox" id="lmode"> Limit feature search to specified family/mineral(s)</input></span></p>
       </div>
     </div>
     <div id='spectra_box'>
