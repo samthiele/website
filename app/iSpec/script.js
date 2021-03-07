@@ -113,11 +113,19 @@ function queryAPI(library, minerals, features)
                 }});
 
                 //add text
-                let mineral = query_result.minerals[i];
-                let family = "other";
-                if (query_result.family) {family = query_result.family[i]};
+                let name = query_result.minerals[i];
+                name = mineral.charAt(0).toUpperCase() + mineral.slice(1); // capitalise first letter
                 let score = (query_result.score[i] * 100).toFixed(0);
-                mresult.innerHTML =  "[ " + score + "% match ]: " + mineral + "&nbsp&nbsp (" + family + ")";
+
+                let family = query_result.family[i];
+                if (family != '') {
+                  mresult.innerHTML =  "[ " + score + "% match ]: " + name + "&nbsp&nbsp (" + family + ")";
+                } else {
+                  mresult.innerHTML =  "[ " + score + "% match ]: " + name;
+                }
+                
+
+                
 
                 mlist.appendChild(mresult);
               }
@@ -134,17 +142,20 @@ function doSearch()
 
   if (qtext)
   {
+    // replace ! with -
+    let searchtxt = qtext.replaceAll("!", "-");
+
     // split query on space, comma or colon
-    let elements = qtext.split(/[\s,;]+/);
+    let elements = searchtxt.split(/[\s,;]+/);
     minerals = [];
     features = [];
     for (let i = 0; i < elements.length; i++)
     {
       if (!isNaN(parseFloat(elements[i]))) // element is numeric = feature
       {
-         features.push(parseFloat(elements[i]))
+         features.push(parseFloat(elements[i]));
       } else {
-        let upper = elements[i].charAt(0).toUpperCase() + elements[i].slice(1)
+        let upper = elements[i].toLowerCase();
         minerals.push(upper); // element is a string = mineral or family
       }
     }
