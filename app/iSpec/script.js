@@ -41,7 +41,7 @@ function decode_query( q )
 }
 
 // define the callAPI function that takes a first name and last name as parameters
-function queryAPI(library, minerals, features , limit)
+function queryAPI(library, minerals, features , conf, limit)
 {
    // instantiate a headers object
    var myHeaders = new Headers();
@@ -54,6 +54,7 @@ function queryAPI(library, minerals, features , limit)
    query = {}
    query.library = library;
    query.minerals = minerals;
+   query.delta = conf;
    if (features.length > 0){ query.features = features; } // add any features to search with
    if (limit){ query.mode = 'AND'; } // change feature search to AND [limited] mode
    var raw = JSON.stringify( query ); // convert query to string
@@ -85,7 +86,7 @@ function queryAPI(library, minerals, features , limit)
             });
             query_result.alpha = query_result['score'].map( function(e) { return e / maxS });
             query_result.positions = query.features;
-            
+
             // plot spectra
             plot_spectra("#spectraviz",
                         query_result,
@@ -155,21 +156,55 @@ function doSearch()
 
   if (qtext)
   {
-    // replace ! with -
-    let searchtxt = qtext.replaceAll("!", "-");
+    
+    // get default confidence
+    let conf = parseFloat( document.getElementById('confidence').value );
 
-    // split query on space, comma or colon
-    let elements = searchtxt.split(/[\s,;]+/);
     minerals = [];
     features = [];
+    confidence = [];
+
+    // split query on brackets
+    let searchtxt = qtext;
+    let brackets = searchtxt.match(/\!?\(\s*[0-9]*[-,\s]*[0-9]*\s*\)/)
+    if (brackets){
+        for (i = 0; i < brackets.length; i++)
+        {
+          // process brackets
+          let lower = brackets[i].toLowerCase().trim();
+          let sign = 1;
+          if (lower[0] == '!') { // handle exclude patterns: !(start,end)
+            sign = -1; 
+            lower=lower.slice(1);
+          } 
+          let bounds = lower.slice(1,-1).trim().split(/[\s,;-]+/);
+          let a = Math.abs(parseFloat(bounds[0]));
+          let b = Math.abs(parseFloat(bounds[1]));
+          let w = Math.abs((a + b) / 2);
+          let d = Math.abs(a-b) / 2;
+
+          // store
+          features.push(w*sign);
+          confidence.push( d );
+
+          // remove brackets from query string
+          searchtxt = searchtxt.replace( brackets[i], '' ).trim(); 
+        }
+    }
+
+    // split query on space, comma or colon
+    searchtxt.replaceAll("!", "-"); // replace ! with -
+    let elements = searchtxt.split(/[\s,;]+/);
     for (let i = 0; i < elements.length; i++)
     {
+      let lower = elements[i].toLowerCase();
       if (!isNaN(parseFloat(elements[i]))) // element is numeric = feature
       {
          features.push(parseFloat(elements[i]));
-      } else {
-        let upper = elements[i].toLowerCase();
-        minerals.push(upper); // element is a string = mineral or family
+         confidence.push(conf);
+      } else if (lower != '')
+      {
+          minerals.push(lower); // element is a string = mineral or family
       }
     }
 
@@ -183,7 +218,7 @@ function doSearch()
     document.getElementById('spectraviz').innerHTML = '<div class="loader"></div><br/><br/>';
 
     // do query
-    queryAPI( 'USGS', minerals, features, document.getElementById('lmode').checked );
+    queryAPI( 'USGS', minerals, features, confidence, document.getElementById('lmode').checked );
   }
 }
 
