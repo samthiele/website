@@ -277,7 +277,7 @@ function plot_spectra( parent, spectra, width=900, height=400, add_range_selecto
         extent = d3.event.selection // get the selected boundaries?
         if(!extent){ // If no selection, back to initial coordinate.
           if (!idleTimeout) return idleTimeout = setTimeout(idled, 350); // This allows to wait a little bit
-            x.domain([4,8])
+            //x.domain([4,8])
           } else { // Otherwise, update X axis domain
             x.domain([ x.invert(extent[0]), x.invert(extent[1]) ])
             y.domain(d3.extent(xy_all, function(d) { // calculate y range
@@ -330,7 +330,8 @@ function rescale(svg, x, y, t=1000)
 {
 
   // todo - change transition here to work on x-axis for smoother sliding
-  // xAxis.transition().duration(1000).call(d3.axisBottom(x));
+  xAxis.transition().duration(1000).call(d3.axisBottom(x));
+  yAxis.transition().duration(1000).call(d3.axisLeft(y));
 
   d3.selectAll('.line')
   .transition()
