@@ -132,7 +132,6 @@ function queryAPI(library, minerals, features , conf, limit)
                 mresult.addEventListener("click", function(event){
                   if (mresult.style.backgroundColor == 'cyan') { // deselect
                     mresult.style.backgroundColor = mc;
-                    //document.getElementById(mineral).style.stroke = mc;
                     d3.select('#' + mineral).style('stroke', mc).style('stroke-opacity',query_result.alpha[i]);
                   } else { // select
                     mresult.style.backgroundColor = 'cyan';
