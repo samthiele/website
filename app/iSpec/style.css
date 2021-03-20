@@ -10,14 +10,31 @@ body {
   overflow-y: scroll;
 }
 
-h1 {
-  font-size: 28px;
+a:link {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
 }
-
+a:visited {
+  color: black;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+      color:  black;
+      background-color: transparent;
+      text-decoration: underline;
+    }
 .smalltext
 {
   font-size: 14px;
 }
+
+h1 {
+  font-size: 28px;
+}
+
+
 
 #outer
 {
