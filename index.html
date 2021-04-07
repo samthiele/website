@@ -2,18 +2,11 @@
 <html lang="en" >
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <meta http-equiv="Cache-Control" content="max-age=200" />
   <title>Sam Thiele</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.css'>
   <link rel="stylesheet" href="./style.css">
   <link rel="icon" href="app/genesis/icon_32.png">
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JVC0JZSBXK"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-JVC0JZSBXK');
-  </script>
 </head>
 
 <body>
@@ -31,7 +24,7 @@
 
       <!-- Intro -->
       <div class="swiper-slide"><div class = "vcenter">
-        <img src="" alt="Sam Thiele", class="drop-shadow mousepop" id="profilepic">
+        <img src="" alt="Sam Thiele" class="drop-shadow mousepop" id="profilepic">
           <div class="floating-cloud emphasise-text">
               <p>The earth is a complex, challenging planet, structured in some ways, unstructured in others,
                 and largely hidden from view. As an earth scientist I enjoy the challenge of understanding and 
@@ -289,14 +282,28 @@
 </body>
 
 <!-- Javascript -->
-<!-- <script type="text/javascript" src='https://swiperjs.com/package/swiper-bundle.min.js'></script> -->
 <script type="text/javascript"> 
   // load larger images from CDN
   var cdn = 'https://d2b44ylxcbterg.cloudfront.net/'; // CDN url
   document.getElementById('parallax-bg').style.backgroundImage="url("+cdn+'img/bg0_grd.jpg)';
   document.getElementById('profilepic').src=cdn+'img/profile.jpg';
 </script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JVC0JZSBXK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JVC0JZSBXK');
+</script>
+
+<!-- Swiper -->
+<!-- <script type="text/javascript" src='https://swiperjs.com/package/swiper-bundle.min.js'></script> -->
 <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.js'></script>
-<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
 <script type="text/javascript" src="./script.js"></script>
+
+<!-- Social media -->
+<script type="text/javascript" src="https://platform.linkedin.com/badges/js/profile.js" async defer></script>
+
 </html>
