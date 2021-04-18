@@ -40,8 +40,20 @@ function decode_query( q )
   return q2;
 }
 
+function buildQuery(library, minerals, features , conf, limit)
+{
+   let query = {}
+   query.library = library;
+   query.minerals = minerals;
+   query.delta = conf;
+   query.offset = 0;
+   if (features.length > 0){ query.features = features; } // add any features to search with
+   if (limit){ query.mode = 'AND'; } // change feature search to AND [limited] mode
+   return query;
+}
+
 // define the callAPI function that takes a first name and last name as parameters
-function queryAPI(library, minerals, features , conf, limit)
+function queryAPI( query )
 {
    // instantiate a headers object
    var myHeaders = new Headers();
@@ -51,12 +63,6 @@ function queryAPI(library, minerals, features , conf, limit)
    myHeaders.append("Content-Type", "application/json");
 
    // build query
-   query = {}
-   query.library = library;
-   query.minerals = minerals;
-   query.delta = conf;
-   if (features.length > 0){ query.features = features; } // add any features to search with
-   if (limit){ query.mode = 'AND'; } // change feature search to AND [limited] mode
    var raw = JSON.stringify( query ); // convert query to string
 
    // create a JSON object with parameters for API call
@@ -70,8 +76,29 @@ function queryAPI(library, minerals, features , conf, limit)
    fetch(url, requestOptions)
      .then(response => response.text())
      .then( function(result) { // once loaded query result
-        query_result = decode_query( JSON.parse(JSON.parse(result).body ) ); // decode base64 arrays
-        document.getElementById('spectraviz').innerHTML = '' // remove spinner
+
+        // decode query and merge with saved results
+        let qresult = decode_query( JSON.parse(JSON.parse(result).body ) ); // decode base64 arrays
+        if (query_result == null) // first search term - easy!
+        {
+          query_result = qresult;
+        } else{ // add to previous saved results
+          for (const [key, value] of Object.entries(qresult.wav)) { // copy any new wavelength data
+            query_result['wav'][key] = value;
+          }
+          for (i = 0; i < qresult.minerals.length; i++) // copy minerals across
+          {
+            if (!stored_minerals.has(qresult.minerals[i])) // this is a new mineral
+            {
+              query_result[qresult.minerals[i]] = qresult[qresult.minerals[i]];
+              query_result.family.push( qresult.family[i]);
+              query_result.minerals.push( qresult.minerals[i]);
+              query_result.score.push( qresult.score[i] ); // overwite previous score
+            }
+          }
+        }
+        // remove spinner
+        document.getElementById('spectraviz').innerHTML = '' 
 
         if (Object.keys( query_result.wav ).length == 0)
         {
@@ -105,10 +132,18 @@ function queryAPI(library, minerals, features , conf, limit)
 
             // add list of results
             let mlist = document.getElementById('mineral_list');
+
+            // add description
+            let desc = document.createElement("div");
+            desc.style.textAlign = "center";
+            desc.className = 'smalltext';
+            desc.innerHTML = 'Search results. Click to select, double click to store.';
+            mlist.appendChild(desc);
+
             for (var i = 0; i < query_result.minerals.length; i++ )
             {
               let mineral = query_result.minerals[i];
-              if (query_result[mineral].length > 0)
+              if (query_result[mineral].length > 0 & !stored_minerals.has(mineral))
               {
                 let mresult = document.createElement("div");
 
@@ -137,6 +172,34 @@ function queryAPI(library, minerals, features , conf, limit)
                     mresult.style.backgroundColor = 'cyan';
                     d3.select('#' + mineral).raise().style('stroke','black').style('stroke-opacity',1.0);
                 }});
+                mresult.addEventListener("dblclick", function(event){
+                  let store_list = document.getElementById('stored_mineral_list');
+                  if (mresult.parentElement == mlist ) // add result to stored list
+                  {
+                    if (store_list.childElementCount == 0 )
+                    {
+                      // add description text
+                      let desc = document.createElement("div");
+                      desc.style.textAlign = "center";
+                      desc.className = 'smalltext';
+                      desc.innerHTML = 'Stored results. Double-click to remove item.'; //'Stored results. Double-click to remove item. Click here to download as csv.
+                      store_list.appendChild(desc);
+                    }
+                    document.getElementById('stored_mineral_list').appendChild(mresult); // move to stored element list
+                    stored_minerals.add( mineral ); // add this to list
+                    if (mlist.childElementCount == 2) // clear if no minerals left
+                    {
+                      clearSearch();
+                    }
+                  } else{ // remove node
+                    stored_minerals.delete( mineral ); // add this to list
+                    store_list.removeChild(mresult); // move to stored element list
+                    if (store_list.childElementCount == 1 ) // clear description text
+                    {
+                      store_list.innerHTML = '';
+                    }
+                  }
+                });
 
                 //add text
                 let name = query_result.minerals[i];
@@ -152,86 +215,160 @@ function queryAPI(library, minerals, features , conf, limit)
                 mlist.appendChild(mresult);
               }
             }
+
+            // add clear / next buttons
+            let nav = document.createElement("div");
+            nav.style.textAlign = "center";
+            nav.className = 'smalltext';
+            nav.innerHTML = '<a href="javascript:searchPrevious()">prev</a>';
+            nav.innerHTML += ' | <a href="javascript:clearSearch()">clear</a>';
+            nav.innerHTML +=' | <a href="javascript:searchNext()">next</a>';
+            mlist.appendChild(nav);
         }
       } )
      .catch(error => console.log('error', error));
 }
 
-function doSearch()
-// parse search box and do query
+function clearSearch()
 {
-  let qtext = $('#query')[0].value;
-
-  if (qtext)
+  
+  if (query_result != null)
   {
-    
-    // get default confidence
-    let conf = parseFloat( document.getElementById('confidence').value );
+    let stored = {"family" :[], "minerals" : [], "score" : [], "alpha" : [], "wav" : query_result.wav }
 
-    minerals = [];
-    features = [];
-    confidence = [];
-
-    // split query on brackets
-    let searchtxt = qtext;
-    let brackets = searchtxt.match(/\!?\(\s*[0-9]*[-,\s]*[0-9]*\s*\)/)
-    if (brackets){
-        for (i = 0; i < brackets.length; i++)
-        {
-          // process brackets
-          let lower = brackets[i].toLowerCase().trim();
-          let sign = 1;
-          if (lower[0] == '!') { // handle exclude patterns: !(start,end)
-            sign = -1; 
-            lower=lower.slice(1);
-          } 
-          let bounds = lower.slice(1,-1).trim().split(/[\s,;-]+/);
-          let a = Math.abs(parseFloat(bounds[0]));
-          let b = Math.abs(parseFloat(bounds[1]));
-          let w = Math.abs((a + b) / 2);
-          let d = Math.abs(a-b) / 2;
-
-          // store
-          features.push(w*sign);
-          confidence.push( d );
-
-          // remove brackets from query string
-          searchtxt = searchtxt.replace( brackets[i], '' ).trim(); 
-        }
-    }
-
-    // split query on space, comma or colon
-    searchtxt = searchtxt.replaceAll("!", "-"); // replace ! with -
-    let elements = searchtxt.split(/[\s,;]+/);
-    for (let i = 0; i < elements.length; i++)
+    // filter event results
+    for (i = 0; i < query_result.minerals.length; i++)
     {
-      let lower = elements[i].toLowerCase();
-      if (!isNaN(parseFloat(elements[i]))) // element is numeric = feature
+      if ( stored_minerals.has( query_result.minerals[i]) ) // keep this mineral
       {
-         features.push(parseFloat(elements[i]));
-         confidence.push(conf);
-      } else if (lower != '')
-      {
-          minerals.push(lower); // element is a string = mineral or family
+        stored[query_result.minerals[i]] = query_result[query_result.minerals[i]];
+        stored.family.push( query_result.family[i]);
+        stored.minerals.push( query_result.minerals[i]);
+        stored.score.push( 1.0 ); // overwite previous score
+        stored.alpha.push( 1.0 ); // overwrite previous alpha
       }
     }
 
-    // todo: allow maxima queries?
-
-    // todo: check libraries to query
-
-
-    // add loader spinner and remove previous results
-    document.getElementById('mineral_list').innerHTML = ''; // remove previous results
-    document.getElementById('spectraviz').innerHTML = '<div class="loader"></div><br/><br/>';
-
-    // do query
-    queryAPI( 'USGS', minerals, features, confidence, document.getElementById('lmode').checked );
+    // keep only stored values
+    query_result = stored;
   }
+  
+  // clear plot
+  document.getElementById('mineral_list').innerHTML = ''; // remove previous results
+  document.getElementById('spectraviz').innerHTML = ''; // clear plot
+
+  //redraw
+  if (query_result != null)
+  {
+    plot_spectra("#spectraviz",
+                query_result,
+                width=parseInt( getComputedStyle( $('#outer')[0] ).width ) - 50,
+                height=400,
+                add_range_selectors = true);
+  }
+}
+
+function searchPrevious()
+{
+  if (query.offset > 0) {
+    query.offset -= 5;
+    doSearch(rebuild = false);
+  }
+}
+
+function searchNext()
+{
+  query.offset += 5;
+  doSearch(rebuild = false);
+}
+
+
+function doSearch( rebuild = true )
+{
+  clearSearch(); // clear results
+
+  // parse search box and do query
+  if (rebuild)
+  {
+    let qtext = $('#query')[0].value;
+
+    if (qtext)
+    {
+      
+      // get default confidence
+      let conf = parseFloat( document.getElementById('confidence').value );
+
+      minerals = [];
+      features = [];
+      confidence = [];
+
+      // split query on space, comma or colon
+      let searchtxt = qtext.toLowerCase();
+      let elements = searchtxt.split(/[\s,;]+/);
+      for (let i = 0; i < elements.length; i++)
+      {
+
+        // feature should be included (default) or excluded? (! flag)
+        let sign = 1; // positive confidence = include
+        if (elements[i].includes('!'))
+        {
+          sign = -1; // negative confidence = exclude  
+          elements[i] = elements[i].replace('!','');
+        }
+
+        // feature is minima (default) or maxima (^ flag)?
+        let maxima = -1.0; // default is negative == minima
+        if (elements[i].includes('^')){
+          maxima = 1.0; // positive = maxima
+          elements[i] = elements[i].replace('^','');
+        }
+
+        // feature exists between specified range? ('a-b')
+        if (elements[i].includes('-'))
+        {
+            let range = elements[i].split('-');
+            if (range.length == 2)
+            {
+              let f0 = parseFloat(range[0]);
+              let f1 = parseFloat(range[1]);
+              if (!isNaN(f0) && !isNaN(f1)) // both must be valid numbers
+              {
+                  // store
+                  features.push(maxima * Math.abs((f0 + f1) / 2));
+                  confidence.push( sign*Math.abs(f1-f0) / 2 );
+              }
+            }
+        } else // feature is individual (either mineral or using default uncertainty)
+        {
+            if (!isNaN(parseFloat(elements[i]))) // element is numeric = feature
+            {
+              features.push(maxima * parseFloat(elements[i]));
+              confidence.push(sign* conf);
+            } else if (elements[i] != '')
+            {
+                minerals.push(elements[i]); // element is a string = mineral or family
+            }
+        }
+
+        
+      }
+
+      // todo: check libraries to query
+      query = buildQuery( 'USGS', minerals, features, confidence, document.getElementById('lmode').checked );
+    }
+  }
+  // add loader spinner and remove previous results
+  document.getElementById('mineral_list').innerHTML = ''; // remove previous results
+  document.getElementById('spectraviz').innerHTML = '<div class="loader"></div><br/><br/>';
+
+  // do query
+  queryAPI( query );
+  
 }
 
 var query; // query will be stored here
 var query_result; // query results will be stored here
+var stored_minerals = new Set(); // names of minerals that are flagged as stored/protected
 
 // bind search box to doSearch
 $('#query')[0].addEventListener("keyup",function(event) {

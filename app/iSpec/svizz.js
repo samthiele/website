@@ -1,3 +1,6 @@
+var isFirefox = (navigator.userAgent.indexOf('Firefox') !== -1);
+var doNotify = true;
+
 function hslToHex(h, s, l)
 // cf. https://stackoverflow.com/questions/36721830/convert-hsl-to-rgb-and-hex
 {
@@ -225,7 +228,7 @@ function plot_spectra( parent, spectra, width=900, height=400, add_range_selecto
     rescale(svg, x, y);
 
 
-    if (plot_position)
+    if (plot_position & !isFirefox )
     {
        // Create the text that travels along the curve of chart
        var focusText = svg
@@ -249,7 +252,6 @@ function plot_spectra( parent, spectra, width=900, height=400, add_range_selecto
             // recover coordinate we need
             var xpos = d3.mouse(this)[0];
             var ypos =  d3.mouse(this)[1];
-
             focusText
               .html( (y.invert(ypos)*100).toFixed(0) + "% at " + x.invert(xpos).toFixed(0) + " nm" )
               .attr("x", 15)
@@ -267,14 +269,25 @@ function plot_spectra( parent, spectra, width=900, height=400, add_range_selecto
         .on("end", updateChart);               // Each time the brush selection changes, trigger the 'updateChart' function
 
     // Add the brushing
-    svg.append("g")
-        .attr("class", "brush")
-        .call(brush);
-    var idleTimeout;
-    function idled() { idleTimeout = null; } // A function that set idleTimeOut to null
+    if (isFirefox)
+    {
+        // brushing doesn't work on firefox... notify
+        if (doNotify)
+        {
+          window.alert("Warning: Some iSpec functions (e.g. zooming) don't work on firefox. If you know why, please tell me!")
+          doNotify = false;
+        }
+    } else
+    {
+      svg.append("g")
+          .attr("class", "brush")
+          .call(brush);
+      var idleTimeout;
+      function idled() { idleTimeout = null; } // A function that set idleTimeOut to null
+    }
 
     function updateChart() { // calculate new boundaries based on brush
-        extent = d3.event.selection // get the selected boundaries?
+        extent = d3.event.selection; // get the selected boundaries?
         if(!extent){ // If no selection, back to initial coordinate.
           if (!idleTimeout) return idleTimeout = setTimeout(idled, 350); // This allows to wait a little bit
             //x.domain([4,8])
