@@ -55,9 +55,9 @@ function plot_spectra( parent, spectra, width=900, height=400, add_range_selecto
 
     // Get default range from spectra object
     var ranges = spectra.ranges || { "VNIR" : [400.,1000.],
-                                    "SWIR" : [1000.,3000.],
-                                    "MWIR" : [3000., 5000.],
-                                    "LWIR" : [5000., 13000.]}
+                                    "SWIR" : [1000.,2500.],
+                                    "MWIR" : [2500., 5500.],
+                                    "LWIR" : [5500., 13000.]}
     var range = spectra.default_range || "SWIR";
     var style = spectra.style || null;
 

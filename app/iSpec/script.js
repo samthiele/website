@@ -182,8 +182,11 @@ function queryAPI( query )
                       let desc = document.createElement("div");
                       desc.style.textAlign = "center";
                       desc.className = 'smalltext';
-                      desc.innerHTML = 'Stored results. Double-click to remove item.'; //'Stored results. Double-click to remove item. Click here to download as csv.
+                      desc.innerHTML = 'Stored results. Double-click to remove item. Click <a id="dlink" href="">here</a> to download.';
                       store_list.appendChild(desc);
+
+                      // bind download link to download function
+                      document.getElementById("dlink").onclick = download;
                     }
                     document.getElementById('stored_mineral_list').appendChild(mresult); // move to stored element list
                     stored_minerals.add( mineral ); // add this to list
@@ -227,6 +230,43 @@ function queryAPI( query )
         }
       } )
      .catch(error => console.log('error', error));
+}
+
+function download()
+{
+  // generate zip file
+  var zip = new JSZip();
+
+  // get data
+  for (m of stored_minerals) { 
+    // add subfolder for mineral
+    var f = zip.folder(m);
+    let i = 1;
+    for (s of query_result[m]) // loop through spectra
+    {  
+        // get corresponding wavelength array
+        let wav = query_result.wav[ s.length ]; 
+
+        // write data
+        let data = "ENVI ASCII Plot File \n"
+        data += "Column 1: Wavelength\n"
+        data += "Column 2: Reflectance\n"
+        for (n = 0; n < wav.length; n++)
+        {
+          data += wav[n] + "," + s[n] + "\n"
+        }
+        f.file("spectra_" + i + "_" + (~~wav[0]) + "_" + (~~wav[ wav.length-1 ]) + ".txt", data);
+        i += 1;
+    }
+  }
+
+  // download
+  zip.generateAsync({type:"blob"})
+  .then(function(content) {
+      saveAs(content, "ispec_query.zip");
+  });
+
+  return false;
 }
 
 function clearSearch()
