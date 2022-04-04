@@ -247,15 +247,18 @@ function download()
         // get corresponding wavelength array
         let wav = query_result.wav[ s.length ]; 
 
+        // compute file name
+        let name = "spectra_" + i + "_" + (~~wav[0]) + "_" + (~~wav[ wav.length-1 ])
+
         // write data
         let data = "ENVI ASCII Plot File \n"
         data += "Column 1: Wavelength\n"
-        data += "Column 2: Reflectance\n"
+        data += "Column 2: " + m + "_" + name + "\n"
         for (n = 0; n < wav.length; n++)
         {
           data += wav[n] + "," + s[n] + "\n"
         }
-        f.file("spectra_" + i + "_" + (~~wav[0]) + "_" + (~~wav[ wav.length-1 ]) + ".txt", data);
+        f.file(name + ".txt", data);
         i += 1;
     }
   }
