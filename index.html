@@ -1,399 +1,424 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
   <meta http-equiv="Cache-Control" content="max-age=200" />
   <title>Sam Thiele</title>
-  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.css'>
+
+  <!-- ✅ Swiper v11 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Custom styles -->
   <link rel="stylesheet" href="./style.css">
   <link rel="icon" href="app/genesis/icon_32.png">
 </head>
 
 <body>
 
-  <!-- Main (vertical) swiper -->
-  <div class="swiper-container swiper-container-v">
-
-    <!-- Background -->
+  <!-- === Main Vertical Swiper === -->
+  <div class="swiper swiper-v">
     <div class="parallax-bg" id="parallax-bg"
-        data-swiper-parallax="-50%"
-        data-swiper-parallax-opacity="0.75"></div>
+      data-swiper-parallax="-50%"
+      data-swiper-parallax-opacity="0.75"></div>
 
-    <!-- Contents -->
     <div class="swiper-wrapper">
 
-      <!-- Intro -->
-      <div class="swiper-slide"><div class = "vcenter">
-        <img src="" alt="Sam Thiele" class="drop-shadow mousepop" id="profilepic">
+      <!-- === Slide 1: Intro === -->
+      <div class="swiper-slide">
+        <div class="vcenter">
+          <img src="" alt="Sam Thiele" class="drop-shadow mousepop" id="profilepic">
           <div class="floating-cloud emphasise-text">
-              <p>The earth is a complex, challenging planet. It is highly structured in many ways, unstructured in others,
-                and largely hidden from view. As an earth scientist I enjoy the challenge of understanding and 
-                interpreting the earth systems and processes that shape this complexity.</p>
-              <p>I make geoscience digital, applying data science and computer simulation at their cutting edge to capture,
-                synthesize and analyse diverse and multi-scale earth system data.</p>
-          </div>
-      </div></div>
-
-      <!-- Page 1 -->
-      <div class="swiper-slide"> <div class="horizontal-bar vcenter">
-        <div class="title-text">
-            <p><b>Things I'm interested in</b></p>
-        </div>
-        <div class="swiper-container swiper-container-h"><div class="swiper-wrapper">
-
-          <div class="swiper-slide centerbox">
-            <div class="item-text">
-              <p><b><i>Geometallurgy and Mineral Systems</i></b></p>
-               <p>Metalliferous raw materials play a key role in modern society, from renewable energy to AI. A step-change is needed to ensure
-                fair and environmentally acceptable supply of these critical elements, driven by scientific and technological developments as well as new attitudes and business models.</p>
-                <a href="https://pubs.geoscienceworld.org/segweb/segdiscovery/article-abstract/doi/10.5382/Geo-and-Mining-26/651694/Geometallurgy-Future-Directions?redirectedFrom=fulltext" target="_blank" rel="noopener noreferrer">
-                  <image class="pubicon" alt="volcano collapse" src="img/pub/geomet/Tusa2025.png" loading="lazy"></image></a>
-                <a href="https://www.nature.com/articles/s41561-024-01587-y" target="_blank" rel="noopener noreferrer">
-                  <image class="pubicon" alt="thermal imaging of volcan de colima lava dome" src="img/pub/geomet/Frenzel25.png" loading="lazy"></image></a>
-                <a href="https://egusphere.copernicus.org/preprints/2024/egusphere-2024-3448/" target="_blank" rel="noopener noreferrer">
-                  <image class="pubicon" alt="dyke thickness records volcano stress" src="img/pub/geomet/Kamath25.png" loading="lazy"></image></a>
-                <a href="https://onlinelibrary.wiley.com/doi/10.1111/phor.12457" target="_blank" rel="noopener noreferrer">
-                  <image class="pubicon" alt="fracture mechanics of multiple-dykes" src="img/pub/geomet/Kirsch23.png" loading="lazy"></image></a>
-            </div>
-          </div>
-
-          <div class="swiper-slide centerbox">
-          <div class="item-text">
-              <p><b><i>Hyperspectral Remote Sensing</i></b></p>
-              <p>Hyperspectral sensors capture geological information at scales ranging from planets to minerals. 
-              As with any "big data", processing and corrections are a battle; but results can be very worthwhile! </p>
-                <a href="https://www.frontiersin.org/journals/earth-science/articles/10.3389/feart.2024.1433662/full" target="_blank" rel="noopener noreferrer">
-                <image class="pubicon" alt="Hyperspectral drillcores" src="img/pub/hsi/realtimeHSI_24.png" loading="lazy"></image></a>
-                <a href="https://www.mdpi.com/2072-4292/16/12/2089" target="_blank" rel="noopener noreferrer">
-                  <image class="pubicon" alt="Hyperspectral satellites" src="img/pub/hsi/satelliteHSI_24.png" loading="lazy"></image></a>
-                <a href="https://www.researchgate.net/publication/351791857_Multi-scale_multi-sensor_data_integration_for_automated_3-D_geological_mapping" target="_blank" rel="noopener noreferrer">
-                  <image class="pubicon" alt="Hyperspectral outcrops" src="img/pub/hsi/hylite_21.png" loading="lazy"></image></a>
-                <a href="https://www.researchgate.net/publication/353721641_A_Novel_and_Open-Source_Illumination_Correction_for_Hyperspectral_Digital_Outcrop_Models" target="_blank" rel="noopener noreferrer">
-                  <image class="pubicon" alt="Illumination correction" src="img/pub/hsi/topocorr_21.png" loading="lazy"></image></a>
-            </div>
-          </div>
-
-          <div class="swiper-slide centerbox">
-            <div class="item-text">
-              <p><b><i>UAV Remote Sensing</i></b></p>
-              <p>Drones allow earth observation at unprecedented resolution and accuracy. But, extracting
-                meaningful information from these datasets, and so building scientific understanding, remains
-                a significant challenge.</p>
-                <a href="https://www.researchgate.net/publication/357205311_Mineralogical_Mapping_with_Accurately_Corrected_Shortwave_Infrared_Hyperspectral_Data_Acquired_Obliquely_from_UAVs" target="_blank" rel="noopener noreferrer">
-                  <image class="pubicon" alt="Hyperspectral drones" src="img/pub/uav/uavhsi_21.png" loading="lazy"></image></a>
-                <a href="https://www.researchgate.net/publication/267630688_Ground-based_and_UAV-Based_photogrammetry_A_multi-scale_high-resolution_mapping_tool_for_Structural_Geology_and_Paleoseismology" target="_blank" rel="noopener noreferrer">
-                  <image class="pubicon" alt="Review of UAV photogrammetry in structural geology" src="img/pub/sg/bemis14.png" loading="lazy"></image></a>
-                <a href="https://www.researchgate.net/publication/319129566_Rapid_semi-automatic_fracture_and_contact_mapping_for_point_clouds_images_and_geophysical_data" target="_blank" rel="noopener noreferrer">
-                  <image class="pubicon" alt="Semi-automatic fracture mapping" src="img/pub/uav/thiele17b.png" loading="lazy"></image></a>
-                <a href="https://www.researchgate.net/publication/330664709_Review_of_drones_photogrammetry_and_emerging_sensor_technology_for_the_study_of_dykes_Best_practises_and_future_potential" target="_blank" rel="noopener noreferrer">
-                  <image class="pubicon" alt="Drone mapping volcano" src="img/pub/uav/dering19.jpg" loading="lazy"></image></a>
-            </div>
-          </div>
-
-          <div class="swiper-slide centerbox">
-            <div class="item-text">
-          <p><b><i>Volcanology</i></b></p>
-          <p>I did my PhD on the interactions between dykes, stress and volcano instability.
-            Volcanoes are fascinatingly variable and unpredictable, an important reminder that
-            even baby geology is intricate and complex.</p>
-              <a href="https://www.researchgate.net/publication/315481846_Thermal_Photogrammetric_Imaging_A_New_Technique_for_Monitoring_Dome_Eruptions" target="_blank" rel="noopener noreferrer">
-                <image class="pubicon" alt="thermal imaging of volcan de colima lava dome" src="img/pub/v/thiele17.jpg" loading="lazy"></image></a>
-              <a href="https://www.researchgate.net/publication/344680284_Dyke_apertures_record_stress_accumulation_during_sustained_volcanism" target="_blank" rel="noopener noreferrer">
-                <image class="pubicon" alt="dyke thickness records volcano stress" src="img/pub/v/thiele20.png" loading="lazy"></image></a>
-              <a href="https://www.researchgate.net/publication/351639195_Reactivation_of_Magma_Pathways_Insights_From_Field_Observations_Geochronology_Geomechanical_Tests_and_Numerical_Models" target="_blank" rel="noopener noreferrer">
-                <image class="pubicon" alt="fracture mechanics of multiple-dykes" src="img/pub/v/thiele21.png" loading="lazy"></image></a>
-              <a href="https://www.nature.com/articles/s43247-023-01046-3" target="_blank" rel="noopener noreferrer">
-                <image class="pubicon" alt="volcano collapse" src="img/pub/v/thiele23.png" loading="lazy"></image></a>
+            <p>The earth is a complex, challenging planet. It is highly structured in many ways, unstructured in others,
+              and largely hidden from view. As an earth scientist I enjoy the challenge of understanding and 
+              interpreting the earth systems and processes that shape this complexity.</p>
+            <p>I make geoscience digital, applying data science and computer simulation at their cutting edge to capture,
+              synthesize and analyse diverse and multi-scale earth system data.</p>
           </div>
         </div>
-
-        <div class="swiper-slide centerbox">
-              <div class="item-text">
-                <p><b><i>Structural Geology</i></b></p>
-                <p>One of the oldest geoscience disciplines, structural geology is key to understanding
-                  rock failure and fluid flow in the earth. This helps predict earthquakes and landslides, find
-                  ore deposits and, soon, capture and store carbon underground. </p>
-                  <a href="https://www.sciencedirect.com/science/article/pii/S037565052400186X?via%3Dihub" target="_blank" rel="noopener noreferrer">
-                    <image class="pubicon" alt="Puga geothermal system" src="img/pub/sg/thiele25.png" loading="lazy"></image></a>
-                  <a href="https://www.researchgate.net/publication/277253691_Insights_into_the_Mechanics_of_En-Echelon_Sigmoidal_Vein_Formation_using_Ultra-High_Resolution_Photogrammetry_and_Computed_Tomography" target="_blank" rel="noopener noreferrer">
-                    <image class="pubicon" alt="sigmoidal vein formation" src="img/pub/sg/thiele15.png" loading="lazy"></image></a>
-                  <a href="https://www.researchgate.net/publication/267630688_Ground-based_and_UAV-Based_photogrammetry_A_multi-scale_high-resolution_mapping_tool_for_Structural_Geology_and_Paleoseismology" target="_blank" rel="noopener noreferrer">
-                    <image class="pubicon" alt="Drone photogrammetry for structural geology" src="img/pub/sg/bemis14.png" loading="lazy"></image></a>
-                  <a href="https://www.researchgate.net/publication/331630711_Extraction_of_high-resolution_structural_orientations_from_digital_data_A_Bayesian_approach" target="_blank" rel="noopener noreferrer">
-                    <image class="pubicon" alt="Bayesian plane fitting for structural geology" src="img/pub/sg/thiele19.jpg" loading="lazy"></image></a>
-              </div>
-        </div>
-
-          <div class="swiper-slide centerbox">
-            <div class="item-text">
-              <p><b><i>3-D modelling and uncertainty</i></b></p>
-              <p>The earth is 3-D and mostly underground. This means the geometry of faults, ore-deposits and reservoirs
-                must be inferred from sparse observations, requiring sophisticated statistical methods
-                and creating significant uncertainty.</p>
-
-                <a href="https://www.researchgate.net/publication/306462728_The_topology_of_geology_1_Topological_analysis" target="_blank" rel="noopener noreferrer">
-                  <image class="pubicon" alt="Topology of geology 1" src="img/pub/3d/thiele16a.jpg" loading="lazy"></image></a>
-                <a href="https://www.researchgate.net/publication/306462933_The_topology_of_geology_2_Topological_uncertainty" target="_blank" rel="noopener noreferrer">
-                  <image class="pubicon" alt="Topology of geology 2" src="img/pub/3d/thiele16b.jpg" loading="lazy"></image></a>
-                <a href="https://www.researchgate.net/publication/298144068_Pynoddy_10_An_experimental_platform_for_automated_3-D_kinematic_and_potential_field_modelling" target="_blank" rel="noopener noreferrer">
-                  <image class="pubicon" alt="PyNoddy 3D modelling" src="img/pub/3d/wellmann16.png" loading="lazy"></image></a>
-                <a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10347274" target="_blank" rel="noopener noreferrer">
-                    <image class="pubicon" alt="Tinto benchmark" src="img/pub/3d/afifi2024.png" loading="lazy"></image></a>
-            </div>
-          </div> </div>
-          <div class="swiper-pagination swiper-pagination-h"></div>
-          </div> </div>
-
-          <!-- Add Arrows -->
-          <div class="swiper-button-next  mousepop"></div>
-          <div class="swiper-button-prev  mousepop"></div>
-
       </div>
-      
-      <!-- Page 2 -->
-      <div class="swiper-slide"> <div class="horizontal-bar vcenter">
-        <div class="title-text">
-            <p><b>Software I develop and maintain</b></p>
-        </div>
-        <div class="swiper-container swiper-container-h"><div class="swiper-wrapper">
+
+      <!-- === Slide 2: Things I'm Interested In === -->
+      <div class="swiper-slide">
+        <div class="horizontal-bar vcenter">
+          <div class="title-text"><p><b>Things I'm interested in</b></p></div>
+          
+          <div class="swiper swiper-h">
+            <div class="swiper-wrapper">
+
+              <div class="swiper-slide centerbox">
+                <div class="">
+                <div class="item-text">
+                  <p><b><i>Geometallurgy and Mineral Systems</i></b></p>
+                   <p>Metalliferous raw materials play a key role in modern society, from renewable energy to AI. A step-change is needed to ensure
+                    fair and environmentally acceptable supply of these critical elements, driven by scientific and technological developments as well as new attitudes and business models.</p>
+                    <a href="https://pubs.geoscienceworld.org/segweb/segdiscovery/article-abstract/doi/10.5382/Geo-and-Mining-26/651694/Geometallurgy-Future-Directions?redirectedFrom=fulltext" target="_blank" rel="noopener noreferrer">
+                      <img class="pubicon" alt="geometallurgy" src="img/pub/geomet/Tusa2025.png" loading="lazy"></a>
+                    <a href="https://www.nature.com/articles/s41561-024-01587-y" target="_blank" rel="noopener noreferrer">
+                      <img class="pubicon" alt="sphalerite" src="img/pub/geomet/Frenzel25.png" loading="lazy"></a>
+                    <a href="https://se.copernicus.org/articles/16/351/2025/" target="_blank" rel="noopener noreferrer">
+                      <img class="pubicon" alt="multiphysics" src="img/pub/geomet/Kamath25.png" loading="lazy"></a>
+                    <a href="https://onlinelibrary.wiley.com/doi/10.1111/phor.12457" target="_blank" rel="noopener noreferrer">
+                      <img class="pubicon" alt="zinnwald lithium" src="img/pub/geomet/Kirsch23.png" loading="lazy"></a>
+                </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide centerbox">
+                <div class="">
+                <div class="item-text">
+                  <p><b><i>Hyperspectral Remote Sensing</i></b></p>
+                  <p>Hyperspectral sensors capture geological information at scales ranging from planets to minerals. 
+                  As with any "big data", processing and corrections are a battle; but results can be very worthwhile! </p>
+                    <a href="https://www.frontiersin.org/journals/earth-science/articles/10.3389/feart.2024.1433662/full" target="_blank" rel="noopener noreferrer">
+                    <img class="pubicon" alt="Hyperspectral drillcores" src="img/pub/hsi/realtimeHSI_24.png" loading="lazy"></a>
+                    <a href="https://www.mdpi.com/2072-4292/16/12/2089" target="_blank" rel="noopener noreferrer">
+                      <img class="pubicon" alt="Hyperspectral satellites" src="img/pub/hsi/satelliteHSI_24.png" loading="lazy"></a>
+                    <a href="https://www.researchgate.net/publication/351791857_Multi-scale_multi-sensor_data_integration_for_automated_3-D_geological_mapping" target="_blank" rel="noopener noreferrer">
+                      <img class="pubicon" alt="Hyperspectral outcrops" src="img/pub/hsi/hylite_21.png" loading="lazy"></a>
+                    <a href="https://www.researchgate.net/publication/353721641_A_Novel_and_Open-Source_Illumination_Correction_for_Hyperspectral_Digital_Outcrop_Models" target="_blank" rel="noopener noreferrer">
+                      <img class="pubicon" alt="Illumination correction" src="img/pub/hsi/topocorr_21.png" loading="lazy"></a>
+                </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide centerbox">
+                <div class="">
+                <div class="item-text">
+                  <p><b><i>3-D modelling and uncertainty</i></b></p>
+                  <p>The earth is 3-D and mostly underground. This means the geometry of faults, ore-deposits and reservoirs
+                    must be inferred from sparse observations, requiring sophisticated statistical methods
+                    and creating significant uncertainty.</p>
+                    <a href="https://eartharxiv.org/repository/view/10473/" target="_blank" rel="noopener noreferrer">
+                      <img class="pubicon" alt="Curlew 3D modelling" src="img/pub/3d/kamath25.png" loading="lazy"></a>
+                    <a href="https://www.researchgate.net/publication/306462728_The_topology_of_geology_1_Topological_analysis" target="_blank" rel="noopener noreferrer">
+                      <img class="pubicon" alt="Topology of geology 1" src="img/pub/3d/thiele16a.jpg" loading="lazy"></a>
+                    <a href="https://www.researchgate.net/publication/306462933_The_topology_of_geology_2_Topological_uncertainty" target="_blank" rel="noopener noreferrer">
+                      <img class="pubicon" alt="Topology of geology 2" src="img/pub/3d/thiele16b.jpg" loading="lazy"></a>
+                    <a href="https://www.researchgate.net/publication/298144068_Pynoddy_10_An_experimental_platform_for_automated_3-D_kinematic_and_potential_field_modelling" target="_blank" rel="noopener noreferrer">
+                      <img class="pubicon" alt="PyNoddy 3D modelling" src="img/pub/3d/wellmann16.png" loading="lazy"></a>
+                </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide centerbox">
+                <div class="">
+                <div class="item-text">
+                  <p><b><i>UAV Remote Sensing</i></b></p>
+                  <p>Drones allow earth observation at unprecedented resolution and accuracy. But, extracting
+                    meaningful information from these datasets, and so building scientific understanding, remains
+                    a significant challenge.</p>
+                    <a href="https://www.researchgate.net/publication/357205311_Mineralogical_Mapping_with_Accurately_Corrected_Shortwave_Infrared_Hyperspectral_Data_Acquired_Obliquely_from_UAVs" target="_blank" rel="noopener noreferrer">
+                      <img class="pubicon" alt="Hyperspectral drones" src="img/pub/uav/uavhsi_21.png" loading="lazy"></a>
+                    <a href="https://www.researchgate.net/publication/267630688_Ground-based_and_UAV-Based_photogrammetry_A_multi-scale_high-resolution_mapping_tool_for_Structural_Geology_and_Paleoseismology" target="_blank" rel="noopener noreferrer">
+                      <img class="pubicon" alt="Review of UAV photogrammetry in structural geology" src="img/pub/sg/bemis14.png" loading="lazy"></a>
+                    <a href="https://www.researchgate.net/publication/319129566_Rapid_semi-automatic_fracture_and_contact_mapping_for_point_clouds_images_and_geophysical_data" target="_blank" rel="noopener noreferrer">
+                      <img class="pubicon" alt="Semi-automatic fracture mapping" src="img/pub/uav/thiele17b.png" loading="lazy"></a>
+                    <a href="https://www.researchgate.net/publication/330664709_Review_of_drones_photogrammetry_and_emerging_sensor_technology_for_the_study_of_dykes_Best_practises_and_future_potential" target="_blank" rel="noopener noreferrer">
+                      <img class="pubicon" alt="Drone mapping volcano" src="img/pub/uav/dering19.jpg" loading="lazy"></a>
+                </div>
+                </div>
+              </div>
               
               <div class="swiper-slide centerbox">
                 <div class="">
-                <a href="https://samthiele.github.io/LaPalmaVFT/#/start" target="_blank" rel="noopener noreferrer">
-                <image class="large-icon mousepop" alt="App1" src="./img/hopper.png" loading="lazy"></image>
-                </a>
                 <div class="item-text">
-                <p><b>RockHopper</b></p>
-                <p><i>Explore the world through online (virtual) field trips</i> </p>
-              </div></div></div>
-
-              <div class="swiper-slide centerbox">
-                <div class="">
-                <a href="https://github.com/hifexplo/hylite" target="_blank" rel="noopener noreferrer">
-                <image class="large-icon mousepop" alt="App1" src="./img/hylite.png" loading="lazy"></image>
-                </a>
-                <div class="item-text">
-                <p><b>hylite</b></p>
-                <p><i>Open-source hyperspectral data correction and analysis in python</i> </p>
-              </div></div></div>
-
-              <div class="swiper-slide centerbox">
-                <div class="">
-                <a href="./app/iSpec/index.html" target="_blank" rel="noopener noreferrer">
-                <image class="large-icon mousepop" alt="App1" src="./app/iSpec/icon_128_white.png" loading="lazy"></image>
-                </a>
-                <div class="item-text">
-                <p><b>iSpec</b></p>
-                <p><i>A hyperspectral search engine</i> </p>
-              </div></div></div>
-
-              <div class="swiper-slide centerbox">
-                <div class="">
-                <a href="https://github.com/samthiele/napari-hippo" target="_blank" rel="noopener noreferrer">
-                <image class="large-icon mousepop" alt="App1" src="./img/hippo.png" loading="lazy"></image>
-                </a>
-                <div class="item-text">
-                <p><b>Hippo</b></p>
-                <p><i>Hyperspectral analysis in Napari</i> </p>
-              </div></div></div>
+                  <p><b><i>Volcanology</i></b></p>
+                  <p>I did my PhD on the interactions between dykes, stress and volcano instability.
+                    Volcanoes are fascinatingly variable and unpredictable, an important reminder that
+                    even baby geology is intricate and complex.</p>
+                      <a href="https://www.researchgate.net/publication/315481846_Thermal_Photogrammetric_Imaging_A_New_Technique_for_Monitoring_Dome_Eruptions" target="_blank" rel="noopener noreferrer">
+                        <img class="pubicon" alt="thermal imaging of volcan de colima lava dome" src="img/pub/v/thiele17.jpg" loading="lazy"></a>
+                      <a href="https://www.researchgate.net/publication/344680284_Dyke_apertures_record_stress_accumulation_during_sustained_volcanism" target="_blank" rel="noopener noreferrer">
+                        <img class="pubicon" alt="dyke thickness records volcano stress" src="img/pub/v/thiele20.png" loading="lazy"></a>
+                      <a href="https://www.researchgate.net/publication/351639195_Reactivation_of_Magma_Pathways_Insights_From_Field_Observations_Geochronology_Geomechanical_Tests_and_Numerical_Models" target="_blank" rel="noopener noreferrer">
+                        <img class="pubicon" alt="fracture mechanics of multiple-dykes" src="img/pub/v/thiele21.png" loading="lazy"></a>
+                      <a href="https://www.nature.com/articles/s43247-023-01046-3" target="_blank" rel="noopener noreferrer">
+                        <img class="pubicon" alt="volcano collapse" src="img/pub/v/thiele23.png" loading="lazy"></a>
+                  </div>
+                  </div>
+              </div>
               
               <div class="swiper-slide centerbox">
                 <div class="">
-                <a href="https://github.com/samthiele/curlew/" target="_blank" rel="noopener noreferrer">
-                <image class="large-icon mousepop" alt="Genesis" src="./img/curlew.png" loading="lazy"></image>
-                </a>
                 <div class="item-text">
-                <p><b>Curlew</b></p>
-                <p><i>Open-source geological models using python and neural fields</i> </p>
-              </div></div></div>
-
+                  <p><b><i>Structural Geology</i></b></p>
+                  <p>One of the oldest geoscience disciplines, structural geology is key to understanding
+                    rock failure and fluid flow in the earth. This helps predict earthquakes and landslides, find
+                    ore deposits and, soon, capture and store carbon underground. </p>
+                    <a href="https://www.sciencedirect.com/science/article/pii/S037565052400186X?via%3Dihub" target="_blank" rel="noopener noreferrer">
+                      <img class="pubicon" alt="Puga geothermal system" src="img/pub/sg/thiele25.png" loading="lazy"></a>
+                    <a href="https://www.researchgate.net/publication/277253691_Insights_into_the_Mechanics_of_En-Echelon_Sigmoidal_Vein_Formation_using_Ultra-High_Resolution_Photogrammetry_and_Computed_Tomography" target="_blank" rel="noopener noreferrer">
+                      <img class="pubicon" alt="sigmoidal vein formation" src="img/pub/sg/thiele15.png" loading="lazy"></a>
+                    <a href="https://www.researchgate.net/publication/267630688_Ground-based_and_UAV-Based_photogrammetry_A_multi-scale_high-resolution_mapping_tool_for_Structural_Geology_and_Paleoseismology" target="_blank" rel="noopener noreferrer">
+                      <img class="pubicon" alt="Drone photogrammetry for structural geology" src="img/pub/sg/bemis14.png" loading="lazy"></a>
+                    <a href="https://www.researchgate.net/publication/331630711_Extraction_of_high-resolution_structural_orientations_from_digital_data_A_Bayesian_approach" target="_blank" rel="noopener noreferrer">
+                      <img class="pubicon" alt="Bayesian plane fitting for structural geology" src="img/pub/sg/thiele19.jpg" loading="lazy"></a>
+                </div>
+                </div>
+              </div>
+              
               <div class="swiper-slide centerbox">
                 <div class="">
-                <a href="./app/genesis/index.html" target="_blank" rel="noopener noreferrer">
-                <image class="large-icon mousepop" alt="Genesis" src="./app/genesis/icon_128.png" loading="lazy"></image>
-                </a>
                 <div class="item-text">
-                <p><b>Genesis</b></p>
-                <p><i>Easy paragenetic sequence diagrams for ore geology</i> </p>
-              </div></div></div>
+                  <p><b><i>Plus much more</i></b></p>
+                  <p>Check out my ResearchGate profile to see more of my work. </p>
+                    <a href="https://www.researchgate.net/profile/Sam_Thiele/amp" target="_blank" rel="noopener noreferrer">
+                      <img class="mousepop large-icon" alt="ResearchGate" src="https://www.researchgate.net/favicon-96x96.png" loading="lazy"></a>
+                </div>
+                </div>
+              </div>
 
-              <div class="swiper-slide centerbox">
-                <div class="">
-                <a href="https://www.cloudcompare.org/doc/wiki/index.php/Compass_(plugin)" target="_blank" rel="noopener noreferrer">
-                <image class="large-icon mousepop" alt="Genesis" src="./img/compass.png" loading="lazy"></image>
-                </a>
-                <div class="item-text">
-                <p><b>Compass</b></p>
-                <p><i>Interactive interpretation of point cloud data</i> </p>
-              </div></div></div>
+            </div>
 
+            <!-- Pagination + Navigation -->
+            <div class="swiper-pagination swiper-pagination-h"></div>
+            <div class="swiper-button-next mousepop"></div>
+            <div class="swiper-button-prev mousepop"></div>
           </div>
-          <div class="swiper-pagination swiper-pagination-h"></div>
-          </div></div>
-
-          <!-- Add Arrows -->
-          <div class="swiper-button-next  mousepop"></div>
-          <div class="swiper-button-prev  mousepop"></div>
-
-      </div>
-
-      <!-- Page 3 -->
-      <div class="swiper-slide"> <div class="horizontal-bar vcenter">
-        <div class="title-text">
-            <p><b>Maybe I can help with</b></p>
         </div>
-        <div class="swiper-container swiper-container-h"><div class="swiper-wrapper">
-
-            <div class="swiper-slide centerbox">
-              <div class="item-text">
-            <p><b><i>Bespoke data analysis and machine learning</i></b></p>
-            <p>With a PhD in Geology and 15 years of programming experience I can leverage my domain knowledge and technical skills to help
-              integrate diverse geoscience data and crack tough analysis problems. </p><br/><p>
-              <image class="softicon mousepop" alt="Python" src="img/soft/python.png" loading="lazy"></image>
-              <image class="softicon mousepop" alt="R" src="img/soft/R.png" loading="lazy"></image>
-              <image class="softicon mousepop" alt="C++" src="img/soft/c.png" loading="lazy"></image>
-            <image class="softicon mousepop" alt="Java" src="img/soft/java.png" loading="lazy"></image></p>
-            </div></div>
-
-            <div class="swiper-slide centerbox">
-              <div class="item-text">
-                <p><b><i>Exploration targeting</i></b></p>
-                <p>Data-driven exploration requires a fusion of big-data machine learning
-                  with the mineral systems paradigm. But, naive approaches tend to fail; expert domain knowledge is
-                  still critical to ensure meaningful results. I translate geoscience into data science to maximise success.
-                </p>
-                <a href="https://unearthed.solutions/news/introducing-winners-exploresa-gawler-challenge" target="_blank" rel="noopener noreferrer">
-                  <image class="mousepop" alt="Gawler challenge winner" src="img/gc.png" style="max-height:120px" loading="lazy"></image></a>
-                  <a href="https://www.humyn.ai/future-explorers" target="_blank" rel="noopener noreferrer">
-                    <image class="mousepop" alt="Future explorers winner" src="img/fec.png" style="max-height:120px" loading="lazy"></image></a>
-              </div>
-            </div>
-
-            <div class="swiper-slide centerbox">
-              <div class="item-text">
-                <p><b><i>Data visualisation</i></b></p>
-                <p>Visualising multi-dimensional datasets is difficult but rewarding. I can use my graphics programming knowledge to design and build
-                  aesthetic visualisations that identify and communicate otherwise subtle information. </p><br/><p>
-                  <image class="softicon mousepop" alt="Blender" src="img/soft/blender.png" loading="lazy"></image>
-                  <image class="softicon mousepop" alt="CloudCompare" src="img/soft/cc.png" loading="lazy"></image>
-                  <image class="softicon mousepop" alt="OpenGL" src="img/soft/ogl.png" loading="lazy"></image>
-                  <image class="softicon mousepop" alt="Matplotlib" src="img/soft/mpl.png" loading="lazy"></image></p>
-              </div>
-            </div>
-
-            <div class="swiper-slide centerbox">
-              <div class="item-text">
-                <p><b><i>GIS analysis and development</i></b></p>
-                <p>Mapping and GIS form an important part of all geosciences. I have extensive experience working with various GIS platforms, including
-                the development of plugins for QGIS and ArcGIS. </p><br/><p>
-                <image class="softicon mousepop" alt="Blender" src="img/soft/qgis.png" loading="lazy"></image>
-                <image class="softicon mousepop" alt="CloudCompare" src="img/soft/gdal.png" loading="lazy"></image>
-                <image class="softicon mousepop" alt="OpenGL" src="img/soft/gpd.png" loading="lazy"></image>
-                <image class="softicon mousepop" alt="Matplotlib" src="img/soft/arcgis.png" loading="lazy"></image></p>
-              </div>
-            </div>
-          </div>
-          <div class="swiper-pagination swiper-pagination-h"></div>
-         </div>
-
-          </div>
-          <!-- <div class="emphasise-text pin-bottom">
-            <i><a class='a' href="mailto:sam.thiele01@gmail.com"><br/><u>Contact me</u></a> for consulting enquiries</i></div> -->
-          <!-- Add Arrows -->
-          <div class="swiper-button-next  mousepop"></div>
-          <div class="swiper-button-prev  mousepop"></div>
       </div>
 
-      <!-- Page 4 -->
-      <div class="swiper-slide"><div class = "vcenter">
-        <div class="swiper-container swiper-contacts"> <div class="swiper-wrapper">
+      <!-- === Slide 3: Software I Develop === -->
+      <div class="swiper-slide">
+        <div class="horizontal-bar vcenter">
+          <div class="title-text"><p><b>Software I develop</b></p></div>
 
-            <!--<div class="swiper-slide centerbox">
-              <div class="contact-trp"><p><b>LinkedIn</b></p>
-                <div class="LI-profile-badge"  data-version="v1" data-size="large" data-locale="en_US" data-type="vertical" data-theme="dark" data-vanity="sam-thiele-991ab689"></div>
-                <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
+          <div class="swiper swiper-h">
+            <div class="swiper-wrapper">
+
+              <div class="swiper-slide centerbox">
+                <div class="">
+                  <a href="https://samthiele.github.io/LaPalmaVFT/#/start" target="_blank" rel="noopener noreferrer">
+                  <img class="large-icon mousepop" alt="App1" src="./img/hopper.png" loading="lazy">
+                  </a>
+                  <div class="item-text">
+                    <p><b>RockHopper</b></p>
+                    <p><i>Explore the world through online (virtual) field trips</i> </p>
+                  </div>
+                </div>
               </div>
-            </div>-->
 
-            <!-- <div class="swiper-slide centerbox"> <div class="contact-trp"><p><b>Twitter</b></p>
-                <a class="twitter-timeline" id='twitter' data-lang="en" data-width="350" data-height="380" data-theme="dark" href="https://twitter.com/thiele_et_al">Tweets by @thiele_et_al</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+              <div class="swiper-slide centerbox">
+                <div class="">
+                  <a href="https://github.com/hifexplo/hylite" target="_blank" rel="noopener noreferrer">
+                  <img class="large-icon mousepop" alt="App1" src="./img/hylite.png" loading="lazy">
+                  </a>
+                  <div class="item-text">
+                  <p><b>hylite</b></p>
+                  <p><i>Open-source hyperspectral data correction and analysis in python</i> </p>
+                </div></div>
               </div>
-            </div> -->
 
-            <div class="swiper-slide centerbox"><div class="contact-trp"><p><b>Publications</b></p>
-                <div class="contact-opq"> <br/>
-                  <p><a href="https://www.researchgate.net/profile/Sam_Thiele/amp" target="_blank" style="vertical-align:top;">
-                    <img class="mousepop small-icon" src="https://www.researchgate.net/favicon-96x96.png" alt="ResearchGate" loading="lazy">
-                  </a><br/>
-                  <b>ResearchGate</b></p>
-
-                  <p><a href="https://orcid.org/0000-0003-4169-0207" target="_blank" style="vertical-align:top;">
-                    <img class="mousepop small-icon" src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" alt="ORCID iD" loading="lazy"/>
-                  </a><br/>
-                  <b>ORCID</b></p>
-
-                  <p><a href="https://www.scopus.com/authid/detail.uri?authorId=57169974700" target="_blank" style="vertical-align:top;">
-                    <img class="mousepop small-icon", src="./img/sc.png" alt="Scopus" loading="lazy"/>
-                  </a><br/>
-                  <b>Scopus</b></p>
-                <br/></div>
-            </div></div>
-
-
-            <div class="swiper-slide centerbox">
-              <div class="contact-trp"> <p><b>Old school</b></p>
-              <div class="contact-opq"> <br/>
-                <p><a href="mailto:sam.thiele01@gmail.com" target="_blank" style="vertical-align:top;">
-                  <img class="mousepop small-icon" src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Email" loading="lazy">
-                </a><br/><b>Email</b></p>
-
-                <p><a href="tel:+4917656987350" target="_blank" style="vertical-align:top;">
-                  <img class="mousepop small-icon" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Phone_Shiny_Icon.svg" alt="Phone" loading="lazy">
-                </a><br/><b>Phone</b></p>
-
-                <p><a href="https://flypigeon.co/" target="_blank" style="vertical-align:top;">
-                  <img class="mousepop small-icon" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Emoji_u1f54a.svg" alt="Pigeon" loading="lazy">
-                </a><br/><b>Pigeon</b></p><br/>
+              <div class="swiper-slide centerbox">
+                <div class="">
+                  <a href="./app/iSpec/index.html" target="_blank" rel="noopener noreferrer">
+                  <img class="large-icon mousepop" alt="App1" src="./app/iSpec/icon_128_white.png" loading="lazy">
+                  </a>
+                  <div class="item-text">
+                  <p><b>iSpec</b></p>
+                  <p><i>A hyperspectral search engine</i> </p>
+                </div></div>
               </div>
+              
+              <div class="swiper-slide centerbox">
+                <div class="">
+                  <a href="https://github.com/samthiele/napari-hippo" target="_blank" rel="noopener noreferrer">
+                  <img class="large-icon mousepop" alt="App1" src="./img/hippo.png" loading="lazy">
+                  </a>
+                  <div class="item-text">
+                  <p><b>Hippo</b></p>
+                  <p><i>Hyperspectral analysis in Napari</i> </p>
+                </div></div>
+              </div>
+
+              <div class="swiper-slide centerbox">
+                <div class="">
+                  <a href="https://github.com/samthiele/curlew/" target="_blank" rel="noopener noreferrer">
+                  <img class="large-icon mousepop" alt="Genesis" src="./img/curlew.png" loading="lazy">
+                  </a>
+                  <div class="item-text">
+                  <p><b>Curlew</b></p>
+                  <p><i>Open-source geological models using python and neural fields</i> </p>
+                </div></div>
+              </div>
+
+              <div class="swiper-slide centerbox">
+                <div class="">
+                  <a href="https://www.cloudcompare.org/doc/wiki/index.php/Compass_(plugin)" target="_blank" rel="noopener noreferrer">
+                  <img class="large-icon mousepop" alt="Genesis" src="./img/compass.png" loading="lazy">
+                  </a>
+                  <div class="item-text">
+                  <p><b>Compass</b></p>
+                  <p><i>Interactive interpretation of point cloud data</i> </p>
+                </div></div>
+              </div>
+
+              <div class="swiper-slide centerbox">
+                <div class="">
+                  <a href="./app/genesis/index.html" target="_blank" rel="noopener noreferrer">
+                  <img class="large-icon mousepop" alt="Genesis" src="./app/genesis/icon_128.png" loading="lazy">
+                  </a>
+                  <div class="item-text">
+                  <p><b>Genesis</b></p>
+                  <p><i>Easy paragenetic sequence diagrams for ore geology</i> </p>
+                </div></div>
+              </div>
+
             </div>
-            </div>
 
+            <div class="swiper-pagination swiper-pagination-h"></div>
+            <div class="swiper-button-next mousepop"></div>
+            <div class="swiper-button-prev mousepop"></div>
           </div>
+        </div>
+      </div>
 
-          <!-- Add Arrows -->
-           <div class="swiper-button-next mousepop"></div>
-           <div class="swiper-button-prev mousepop"></div>
-         </div>
-         <div class="emphasise-text">
-            <p><b>Contact me using your preferred platform</b></p>
-         </div>
-       </div></div> <!-- Page 4 -->
+      <!-- === Slide 4: Other activities === -->
+      <div class="swiper-slide">
+        <div class="horizontal-bar vcenter">
+          <div class="title-text"><p><b>Maybe I can help with</b></p></div>
 
-      </div> <!-- Contents -->
-      <div class="swiper-pagination swiper-pagination-v"></div><!-- Add Pagination -->
-    </div><!-- End of main slider -->
+          <div class="swiper swiper-h">
+            <div class="swiper-wrapper">
+
+              <div class="swiper-slide centerbox">
+                <div class="">
+                  <div class="item-text">
+                    <p><b><i>Bespoke data analysis and machine learning</i></b></p>
+                    <p>With a PhD in Geology and 15 years of programming experience I can leverage my domain knowledge and technical skills to help
+                      integrate diverse geoscience data and crack tough analysis problems. </p><br><p>
+                      <img class="softicon mousepop" alt="Python" src="img/soft/python.png" loading="lazy">
+                      <img class="softicon mousepop" alt="R" src="img/soft/R.png" loading="lazy">
+                      <img class="softicon mousepop" alt="C++" src="img/soft/c.png" loading="lazy">
+                    <img class="softicon mousepop" alt="Java" src="img/soft/java.png" loading="lazy"></p>
+                    </div>
+                </div>
+              </div>
+              
+              <div class="swiper-slide centerbox">
+                <div class="">
+                  <div class="item-text">
+                    <p><b><i>Exploration targeting</i></b></p>
+                    <p>Data-driven exploration requires a fusion of big-data machine learning
+                      with the mineral systems paradigm. But, naive approaches tend to fail; expert domain knowledge is
+                      still critical to ensure meaningful results. I translate geoscience into data science to maximise success.
+                    </p>
+                    <a href="https://unearthed.solutions/news/introducing-winners-exploresa-gawler-challenge" target="_blank" rel="noopener noreferrer">
+                      <img class="mousepop" alt="Gawler challenge winner" src="img/gc.png" style="max-height:120px" loading="lazy"></a>
+                      <a href="https://www.humyn.ai/future-explorers" target="_blank" rel="noopener noreferrer">
+                        <img class="mousepop" alt="Future explorers winner" src="img/fec.png" style="max-height:120px" loading="lazy"></a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="swiper-slide centerbox">
+                <div class="">
+                  <div class="item-text">
+                    <p><b><i>Data visualisation</i></b></p>
+                    <p>Visualising multi-dimensional datasets is difficult but rewarding. I can use my graphics programming knowledge to design and build
+                      aesthetic visualisations that identify and communicate otherwise subtle information. </p><br><p>
+                      <img class="softicon mousepop" alt="Blender" src="img/soft/blender.png" loading="lazy">
+                      <img class="softicon mousepop" alt="CloudCompare" src="img/soft/cc.png" loading="lazy">
+                      <img class="softicon mousepop" alt="OpenGL" src="img/soft/ogl.png" loading="lazy">
+                      <img class="softicon mousepop" alt="Matplotlib" src="img/soft/mpl.png" loading="lazy"></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="swiper-slide centerbox">
+                <div class="">
+                  <div class="item-text">
+                    <p><b><i>GIS analysis and development</i></b></p>
+                    <p>Mapping and GIS form an important part of all geosciences. I have extensive experience working with various GIS platforms, including
+                    the development of plugins for QGIS and ArcGIS. </p><br><p>
+                    <img class="softicon mousepop" alt="Blender" src="img/soft/qgis.png" loading="lazy">
+                    <img class="softicon mousepop" alt="CloudCompare" src="img/soft/gdal.png" loading="lazy">
+                    <img class="softicon mousepop" alt="OpenGL" src="img/soft/gpd.png" loading="lazy">
+                    <img class="softicon mousepop" alt="Matplotlib" src="img/soft/arcgis.png" loading="lazy"></p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="swiper-pagination swiper-pagination-h"></div>
+            <div class="swiper-button-next mousepop"></div>
+            <div class="swiper-button-prev mousepop"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- === Slide 5: Contact === -->
+      <div class="swiper-slide">
+        <div class="horizontal-bar vcenter">
+          <div class="title-text"><p><b>Look me up and reach out</b></p></div>
+
+          <div class="swiper swiper-h">
+            <div class="swiper-wrapper">
+
+              <div class="swiper-slide centerbox">
+                <div class="">
+                  <div class="item-text">
+                      <p><a href="https://www.researchgate.net/profile/Sam_Thiele/amp" target="_blank" style="vertical-align:top;">
+                        <img class="mousepop small-icon" src="https://www.researchgate.net/favicon-96x96.png" alt="ResearchGate" loading="lazy">
+                      </a><br>
+                      <b>ResearchGate</b></p>
+    
+                      <p><a href="https://orcid.org/0000-0003-4169-0207" target="_blank" style="vertical-align:top;">
+                        <img class="mousepop small-icon" src="https://orcid.org/assets/vectors/orcid.logo.icon.svg" alt="ORCID iD" loading="lazy">
+                      </a><br>
+                      <b>ORCID</b></p>
+    
+                      <p><a href="https://www.scopus.com/authid/detail.uri?authorId=57169974700" target="_blank" style="vertical-align:top;">
+                        <img class="mousepop small-icon" ,="" src="./img/sc.png" alt="Scopus" loading="lazy">
+                      </a><br>
+                      <b>Scopus</b></p>
+                </div>
+                </div>
+            </div>
+            
+            <div class="swiper-slide centerbox">
+              <div class="">
+                <div class="item-text">
+                    <p><a href="mailto:sam.thiele01@gmail.com" target="_blank" style="vertical-align:top;">
+                      <img class="mousepop small-icon" src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png" alt="Email" loading="lazy">
+                    </a><br><b>Email</b></p>
+    
+                    <p><a href="tel:+4917656987350" target="_blank" style="vertical-align:top;">
+                      <img class="mousepop small-icon" src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Phone_Shiny_Icon.svg" alt="Phone" loading="lazy">
+                    </a><br><b>Phone</b></p>
+    
+                    <p><a href="https://flypigeon.co/" target="_blank" style="vertical-align:top;">
+                      <img class="mousepop small-icon" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Emoji_u1f54a.svg" alt="Pigeon" loading="lazy">
+                    </a><br><b>Pigeon</b></p>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          <div class="swiper-pagination swiper-pagination-h"></div>
+          <div class="swiper-button-next mousepop"></div>
+          <div class="swiper-button-prev mousepop"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination for vertical swiper -->
+    <div class="swiper-pagination swiper-pagination-v"></div>
+  </div>
+
+  <!-- === JS: Load background and profile image === -->
+  <script type="text/javascript">
+    const cdn = 'https://d2b44ylxcbterg.cloudfront.net/';
+    document.getElementById('parallax-bg').style.backgroundImage = `url(${cdn}img/bg0_grd.jpg)`;
+    document.getElementById('profilepic').src = `${cdn}img/profile.jpg`;
+  </script>
+
+  <!-- Swiper v11 -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Your custom initialization -->
+  <script src="./script.js"></script>
+
 </body>
-
-<!-- Javascript -->
-<script type="text/javascript"> 
-  // load larger images from CDN
-  var cdn = 'https://d2b44ylxcbterg.cloudfront.net/'; // CDN url
-  document.getElementById('parallax-bg').style.backgroundImage="url("+cdn+'img/bg0_grd.jpg)';
-  document.getElementById('profilepic').src=cdn+'img/profile.jpg';
-</script>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-JVC0JZSBXK"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-JVC0JZSBXK');
-</script> -->
-
-<!-- Swiper -->
-<!-- <script type="text/javascript" src='https://swiperjs.com/package/swiper-bundle.min.js'></script> -->
-<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.5/swiper-bundle.min.js'></script>
-<script type="text/javascript" src="./script.js"></script>
-
 </html>
