@@ -1,3 +1,21 @@
+// Helper: manually trigger lazy load for active and nearby slides
+function triggerLazyLoad(swiper) {
+  // Load current, previous, and next slides (for smooth transitions)
+  const slidesToLoad = [
+    swiper.slides[swiper.activeIndex],
+    swiper.slides[swiper.activeIndex - 1],
+    swiper.slides[swiper.activeIndex + 1]
+  ].filter(Boolean);
+
+  slidesToLoad.forEach(slide => {
+    slide.querySelectorAll('img[loading="lazy"]').forEach(img => {
+      if (img.dataset.src && !img.src) {
+        img.src = img.dataset.src;
+      }
+    });
+  });
+}
+
 // === Horizontal Swipers (nested) ===
 document.querySelectorAll('.swiper-h').forEach((el) => {
   new Swiper(el, {
@@ -20,6 +38,10 @@ document.querySelectorAll('.swiper-h').forEach((el) => {
       renderBullet: function (index, className) {
         return `<span class="${className}">${index + 1}</span>`;
       },
+    },
+    on: {
+      init: triggerLazyLoad,
+      slideChangeTransitionStart: triggerLazyLoad,
     },
     loop: true,
     mousewheel: false,
