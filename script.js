@@ -1,20 +1,27 @@
-// Helper: manually trigger lazy load for active and nearby slides
+// manually trigger lazy load for active and nearby slides
 function triggerLazyLoad(swiper) {
-  // Load current, previous, and next slides (for smooth transitions)
-  const slidesToLoad = [
-    swiper.slides[swiper.activeIndex],
-    swiper.slides[swiper.activeIndex - 1],
-    swiper.slides[swiper.activeIndex + 1]
-  ].filter(Boolean);
-
+  const slidesToLoad = swiper.slides;
   slidesToLoad.forEach(slide => {
     slide.querySelectorAll('img[loading="lazy"]').forEach(img => {
       if (img.dataset.src && !img.src) {
+        img.addEventListener('load', () => {
+          //console.log('Image loaded:', img.src);
+          swiper.update();
+
+          // Force Safari repaint
+          img.style.display = 'none';
+          img.offsetHeight; // force reflow
+          img.style.display = '';
+        });
+        
+        // update image source
         img.src = img.dataset.src;
+        img.removeAttribute('data-src');
       }
     });
   });
 }
+
 
 // === Horizontal Swipers (nested) ===
 document.querySelectorAll('.swiper-h').forEach((el) => {
@@ -41,7 +48,6 @@ document.querySelectorAll('.swiper-h').forEach((el) => {
     },
     on: {
       init: triggerLazyLoad,
-      slideChangeTransitionStart: triggerLazyLoad,
     },
     loop: true,
     mousewheel: false,
