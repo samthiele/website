@@ -1,3 +1,5 @@
+fetch("https://app-analytics.my-app-logs.workers.dev?app=genesis", {mode: "cors", keepalive: true}).catch(function () {}); // analytics
+
 // default properties
 var stages = ["Vein", "Proximal", "Distal", "Unaltered"];
 var thickness = [ [3,1,1,1], // line thickness for mineral A in each zone
