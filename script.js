@@ -1,3 +1,5 @@
+fetch("https://app-analytics.my-app-logs.workers.dev?app=homepage", {mode: "cors", keepalive: true}).catch(function () {}); // analytics
+ 
 // manually trigger lazy load for active and nearby slides
 function triggerLazyLoad(swiper) {
   const slidesToLoad = swiper.slides;
