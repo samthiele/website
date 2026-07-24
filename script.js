@@ -1,5 +1,10 @@
-fetch("https://app-analytics.my-app-logs.workers.dev?app=homepage", {mode: "cors", keepalive: true}).catch(function () {}); // analytics
- 
+// analytics
+const url = new URL("https://app-analytics.my-app-logs.workers.dev");
+url.searchParams.set("app", "rockhopper");
+url.searchParams.set("page", `${window.location.origin}${window.location.pathname}`);
+url.searchParams.set("referrer", document.referrer || "");
+fetch(url, { mode: "cors", keepalive: true }).catch(() => {});
+
 // manually trigger lazy load for active and nearby slides
 function triggerLazyLoad(swiper) {
   const slidesToLoad = swiper.slides;
